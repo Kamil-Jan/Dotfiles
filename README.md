@@ -6,7 +6,7 @@ Run `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/maste
 
 - [fzf](https://github.com/junegunn/fzf)
 
-    Pacman: `sudo pacman -S fzf`
+    Run `sudo pacman -S fzf` to install
 
 - [Anaconda](https://www.anaconda.com/)
 
@@ -17,9 +17,9 @@ Run `sudo pacman -S neovim` to install. Then run `:PlugInstall` inside neovim to
     + coc-python
     + coc-clangd
 
-# [Alacritty](https://github.com/alacritty/alacritty)
+# [Alacrity](https://github.com/alacritty/alacritty) terminal emulator
 Run `sudo pacman -S alacritty` to install
 
 # [Ranger](https://github.com/ranger/ranger)
-Run `sudo pacman -S ranger`
+Run `sudo pacman -S ranger` to install
 
