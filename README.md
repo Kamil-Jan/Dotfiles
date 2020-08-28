@@ -17,9 +17,8 @@ Run `sudo pacman -S neovim` to install. Then run `:PlugInstall` inside neovim to
     + coc-python
     + coc-clangd
 
-# [Alacrity](https://github.com/alacritty/alacritty) terminal emulator
+# [Alacritty](https://github.com/alacritty/alacritty) terminal emulator
 Run `sudo pacman -S alacritty` to install
 
 # [Ranger](https://github.com/ranger/ranger)
 Run `sudo pacman -S ranger` to install
-
