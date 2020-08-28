@@ -1,5 +1,4 @@
-~/.config/alacritty
-~/.config/nvim
-~/.config/ranger
-~/.zshrc
-~/.bashrc
+/home/kamil/.config/alacritty
+/home/kamil/.config/nvim
+/home/kamil/.config/ranger
+/home/kamil/.zshrc
