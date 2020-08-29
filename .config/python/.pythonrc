@@ -1,0 +1,7 @@
+import os
+import readline
+
+
+HISTFILE = os.environ["XDG_CONFIG_HOME"] + "/python/.python_history"
+readline.read_history_file(HISTFILE)
+

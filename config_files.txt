@@ -3,4 +3,5 @@
 /home/kamil/.config/ranger
 /home/kamil/.config/zsh
 /home/kamil/.config/.aliases
+/home/kamil/.config/python/.pythonrc
 /home/kamil/.zshenv

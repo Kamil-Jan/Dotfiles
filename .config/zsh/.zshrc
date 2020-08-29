@@ -59,8 +59,8 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'kj' vi-cmd-mode
 
 # Alias section
-if [ -f ~/.aliases ]; then
-    source ~/.aliases
+if [ -f $XDG_CONFIG_HOME/.aliases ]; then
+    source $XDG_CONFIG_HOME/.aliases
 fi
 
 # Color man pages
