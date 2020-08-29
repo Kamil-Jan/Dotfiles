@@ -2,3 +2,4 @@
 /home/kamil/.config/nvim
 /home/kamil/.config/ranger
 /home/kamil/.zshrc
+/home/kamil/.aliases

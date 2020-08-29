@@ -59,11 +59,9 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'kj' vi-cmd-mode
 
 # Alias section
-alias cp="cp -i"
-alias mv="mv -i"
-alias v="nvim"
-alias ll="ls -lah"
-alias gs="git status"
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+fi
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
@@ -80,8 +78,9 @@ export LESS=-r
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden --depth 10 --ignore .git -f -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="find . -type d"
 
-# zsh-autosuggestions
+# Zsh-autosuggestions
 bindkey '^ ' autosuggest-accept
 
 # Anaconda
