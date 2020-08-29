@@ -59,10 +59,11 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'kj' vi-cmd-mode
 
 # Alias section
-alias cp="cp -i"                                                # Confirm before overwriting something
-alias df='df -h'                                                # Human-readable sizes
-alias free='free -m'                                            # Show sizes in MB
-alias gitu='git add . && git commit && git push'
+alias cp="cp -i"
+alias mv="mv -i"
+alias v="nvim"
+alias ll="ls -lah"
+alias gs="git status"
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
