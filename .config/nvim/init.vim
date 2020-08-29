@@ -7,7 +7,7 @@
 "_________________________________________
 
 " Plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/.vim/plugged')
 
 " File navigation
     Plug 'preservim/nerdtree'

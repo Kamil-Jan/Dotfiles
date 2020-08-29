@@ -1,5 +1,6 @@
 /home/kamil/.config/alacritty
 /home/kamil/.config/nvim
 /home/kamil/.config/ranger
-/home/kamil/.zshrc
-/home/kamil/.aliases
+/home/kamil/.config/zsh
+/home/kamil/.config/.aliases
+/home/kamil/.zshenv

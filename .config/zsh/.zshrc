@@ -26,12 +26,12 @@ zstyle ':completion:*' rehash true                              # automatically 
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
-HISTFILE=~/.zhistory
+HISTFILE=~/.cache/zsh/history
 HISTSIZE=1000
 SAVEHIST=500
-export EDITOR="nvim"
-export TERMINAL="alacritty"
-export READER="mupdf"
+#export EDITOR="nvim"
+#export TERMINAL="alacritty"
+#export READER="mupdf"
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
 # Basic auto/tab complete:
