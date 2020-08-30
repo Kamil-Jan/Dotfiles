@@ -1,5 +1,8 @@
 alias cp="cp -i"
 alias mv="mv -i"
 alias v="nvim"
+alias ls="ls --color=auto"
 alias ll="ls -lah"
+alias la="ls -a"
 alias gs="git status"
+alias grep='grep --color=auto'
