@@ -26,13 +26,16 @@ zstyle ':completion:*' rehash true                              # automatically 
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# Environment variables
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=1000
 SAVEHIST=500
-#export EDITOR="nvim"
-#export TERMINAL="alacritty"
-#export READER="mupdf"
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+TERMINAL="alacritty"
+EDITOR="nvim"
+VISUAL="nvim"
+READER="mupdf"
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -47,7 +50,7 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
-# Plugins section: Enable fish style features
+# Plugins section
 # Use autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Use syntax highlighting
@@ -73,7 +76,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-r
 
-# Program & plugins settings
+# Program & plugins section
 # Fzf
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 export FZF_DEFAULT_COMMAND='ag --hidden --depth 10 --ignore .git -f -g ""'
