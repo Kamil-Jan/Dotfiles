@@ -44,8 +44,8 @@ font:
 
 # key_bindings
 key_bindings:
-    - { key: K, mods: Alt, action: ScrollPageUp }
-    - { key: J, mods: Alt, action: ScrollPageDown }
+    - { key: K, mods: Alt, action: ScrollLineUp }
+    - { key: J, mods: Alt, action: ScrollLineDown }
 
 background_opacity: 0.9
 

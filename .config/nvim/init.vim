@@ -164,6 +164,7 @@ nnoremap <silent> <C-T> :tabnew<CR>
 noremap <leader>y "+y
 noremap <leader>p "+p
 inoremap <leader>p <esc>"+pa
+noremap <leader>ay :%y+<CR>
 
 " auto correcting in a line
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
