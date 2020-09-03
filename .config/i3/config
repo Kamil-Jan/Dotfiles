@@ -4,6 +4,7 @@
 
 # General
 set $mod Mod4
+set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
 font pango:DejaVu Sans Mono 10
 
 # gaps settings
@@ -13,21 +14,10 @@ gaps outer 12
 for_window [class=".*"] border pixel 5
 
 # wallpapers
-exec feh --bg-center /usr/share/wallpapers/PastelHills/contents/images/3200x2000.jpg
+exec feh --bg-center /usr/share/wallpapers/summer_1am/contents/images/2560x1600.jpg
 
 # change keyboard layout
 exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:caps_toggle"
-
-# Network settings
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # i3 window controls
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -152,8 +142,20 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Special keys
+## Print screen
 bindsym Print exec "scrot /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 bindsym Shift+Print --release exec "scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+
+## Volume keys
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+## Extra XF86 keys
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 
 # Apps keybindings
 bindsym $mod+b exec firefox
