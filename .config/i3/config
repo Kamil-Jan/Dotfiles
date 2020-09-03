@@ -139,7 +139,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Status bar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $XDG_CONFIG_HOME/polybar/launch.sh
 
 # Special keys
 ## Print screen
@@ -160,4 +160,7 @@ bindsym XF86MonBrightnessDown exec light -U 5
 # Apps keybindings
 bindsym $mod+b exec firefox
 bindsym $mod+t exec telegram-desktop
+
+# i3 lock
+bindsym $mod+F1 exec $XDG_CONFIG_HOME/i3/scripts/lock.sh
 
