@@ -8,7 +8,16 @@ Run `sudo pacman -S i3-gaps` to install. For dmenu (dynamic menu) run `sudo pacm
 
 For wallpapers you need to install feh. Run `sudo pacman -S feh`
 
-For changing screen brightness light is needed. Run `sudo pacman -S light`. Then you need to change permissions for brightness file. Run `chmod a+w /sys/class/backlight/.../brightness`
+For changing screen brightness light is needed. Run `sudo pacman -S light lightdm`. Add user to the video group `usermod -a -G video <user>`. To allow users in the video group to change the brightness, a udev rule such as the following can be used:
+
+```
+/etc/udev/rules.d/backlight.rules
+-------------------
+ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="<kernel>", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness"
+ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="<kernel>", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
+```
+
+To find out kernel run `ls /sys/class/backlight/`.
 
 # [Polybar](https://github.com/polybar/polybar) - status bar
 
