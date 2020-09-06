@@ -8,7 +8,7 @@ Run `sudo pacman -S i3-gaps` to install. For dmenu (dynamic menu) run `sudo pacm
 
 For wallpapers you need to install feh. Run `sudo pacman -S feh`
 
-For changing screen brightness light is needed. Run `sudo pacman -S light lightdm`. Add user to the video group `usermod -a -G video <user>`. To allow users in the video group to change the brightness, a udev rule such as the following can be used:
+To change the screen brightness the `light` is needed. Run `sudo pacman -S light lightdm`. Add user to the video group `usermod -a -G video <user>`. To allow users in the video group to change the brightness, a udev rule such as the following can be used:
 
 ```
 /etc/udev/rules.d/backlight.rules
@@ -17,11 +17,11 @@ ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="<kernel>", RUN+="/bin/chgrp vide
 ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="<kernel>", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
 ```
 
-To find out kernel run `ls /sys/class/backlight/`.
+To find out the kernel run `ls /sys/class/backlight/`.
 
 # [Polybar](https://github.com/polybar/polybar) - status bar
 
-Run `sudo pacman -S polybar` to install. Change permissions of launch.sh. Run `chmod +x ~/.config/polybar/launch.sh`
+Run `sudo pacman -S polybar` to install. To change permissions of launch.sh run `chmod +x ~/.config/polybar/launch.sh`
 
 # [Powerlevel10k](https://github.com/romkatv/powerlevel10k) - zsh color scheme.
 
@@ -29,7 +29,7 @@ Run `git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlev
 
 # [Fzf](https://github.com/junegunn/fzf) - fuzzy finder
 
-It's an interactive Unix filter for command-line that can be used with any list; files, command history, processes, hostnames, bookmarks, git commits, etc.
+It is an interactive Unix filter for command-line that can be used with any list; files, command history, processes, hostnames, bookmarks, git commits, etc.
 Run `sudo pacman -S fzf` to install
 
 # [Neovim](https://github.com/neovim/neovim) - text editor
