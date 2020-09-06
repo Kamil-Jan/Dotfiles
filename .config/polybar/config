@@ -10,6 +10,7 @@
 ;==========================================================
 
 [colors]
+font-0 = "FontAwesome:style=Regular:antialias=true:size=12;3"
 background = ${xrdb:background}
 background-alt = #444
 foreground = ${xrdb:foreground}
@@ -55,7 +56,7 @@ font-3 = Symbola:pixelsize=9;1
 
 modules-left = i3
 ;modules-center = mpd
-modules-right = pulseaudio backlight xkeyboard temperature memory wlan battery date powermenu
+modules-right = pulseaudio backlight xkeyboard cpu temperature memory wlan battery date powermenu
 
 tray-position = right
 tray-padding = 0
@@ -106,7 +107,7 @@ format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+label-muted = muted
 label-muted-foreground = #666
 
 bar-volume-width = 5
@@ -160,16 +161,22 @@ label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
+[module/cpu]
+type = internal/cpu
+format = <label>
+label = %{A1:alacritty -e htop & disown:}CPU %percentage%%%{A}
+label-underline = ${colors.orange}
+
 [module/temperature]
 type = internal/temperature
 hwmon-path = /sys/devices/pci0000:00/0000:00:01.3/0000:01:00.0/hwmon/hwmon0/temp1_input
 label = %temperature-c%
-label-underline = ${colors.orange}
+label-underline = ${colors.yellow}
 
 [module/memory]
 type = internal/memory
-label = RAM %gb_used%/%gb_total%
-label-underline = ${colors.yellow}
+label = %{A1:alacritty -e htop & disown:}RAM %gb_used%/%gb_total%%{A}
+label-underline = ${colors.green}
 
 [module/wlan]
 type = internal/network
@@ -177,12 +184,12 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = <label-connected>
-format-connected-underline = ${colors.green}
+format-connected-underline = ${colors.cyan}
 label-connected = %downspeed% %essid%
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = no wifi
+label-disconnected = %{A1:alacritty -e nmtui & disown:}no wifi%{A}
 label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/battery]
@@ -191,17 +198,14 @@ battery = BAT1
 adapter = ADP1
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.cyan}
+format-charging = <label-charging>
+format-charging-underline = ${colors.blue}
 
 format-discharging = <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
-
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 500
 
 [module/date]
 type = internal/date
