@@ -19,6 +19,7 @@ secondary = #e60053
 alert = #bd2c40
 black = ${xrdb:color0}
 red = ${xrdb:color1}
+orange = #ff7100
 green = ${xrdb:color2}
 yellow = ${xrdb:color3}
 blue = ${xrdb:color4}
@@ -54,7 +55,7 @@ font-3 = Symbola:pixelsize=9;1
 
 modules-left = i3
 ;modules-center = mpd
-modules-right = pulseaudio backlight xkeyboard memory wlan battery date powermenu
+modules-right = pulseaudio backlight xkeyboard temperature memory wlan battery date powermenu
 
 tray-position = right
 tray-padding = 0
@@ -148,7 +149,6 @@ bar-empty-foreground = ${colors.foreground-alt}
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
 
@@ -160,10 +160,16 @@ label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
+[module/temperature]
+type = internal/temperature
+hwmon-path = /sys/devices/pci0000:00/0000:00:01.3/0000:01:00.0/hwmon/hwmon0/temp1_input
+label = %temperature-c%
+label-underline = ${colors.orange}
+
 [module/memory]
 type = internal/memory
 label = RAM %gb_used%/%gb_total%
-label-underline = ${colors.magenta}
+label-underline = ${colors.yellow}
 
 [module/wlan]
 type = internal/network
@@ -171,8 +177,8 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = <label-connected>
-format-connected-underline = ${colors.blue}
-label-connected = "%{A1:nm-connection-editor &:} %downspeed% %essid%%{A}"
+format-connected-underline = ${colors.green}
+label-connected = %downspeed% %essid%
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
@@ -186,23 +192,14 @@ adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.yellow}
+format-charging-underline = ${colors.cyan}
 
-format-discharging = <ramp-capacity> <label-discharging>
+format-discharging = <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 500
 
@@ -216,10 +213,7 @@ date-alt = "%d %b %Y (%a)"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.green}
-
+format-underline = ${colors.magenta}
 label = %date% %time%
 
 [module/powermenu]
