@@ -20,6 +20,7 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'junegunn/gv.vim'
 " Themes
     Plug 'morhetz/gruvbox'
+    Plug 'cormacrelf/vim-colors-github'
     Plug 'joshdick/onedark.vim'
 " Mark Down
     Plug 'godlygeek/tabular'
@@ -54,7 +55,7 @@ set splitright
 set splitbelow
 
 " scheme and airline settings
-colorscheme onedark
+colorscheme gruvbox
 set bg=dark
 
 " encoding settings

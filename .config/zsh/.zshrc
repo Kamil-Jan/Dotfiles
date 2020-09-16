@@ -32,10 +32,6 @@ HISTFILE=~/.cache/zsh/history
 HISTSIZE=1000
 SAVEHIST=500
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
-#TERMINAL="alacritty"
-#EDITOR="nvim"
-#VISUAL="nvim"
-#READER="mupdf"
 
 # Basic auto/tab complete:
 autoload -U compinit

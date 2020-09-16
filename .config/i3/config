@@ -7,9 +7,43 @@ set $mod Mod4
 set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
 font pango:DejaVu Sans Mono 10
 
+# Colors
+set_from_resource $bg background
+set_from_resource $fg foreground
+
+set_from_resource $black1 color0
+set_from_resource $black2 color8
+
+set_from_resource $red1 color1
+set_from_resource $red2 color9
+
+set_from_resource $green1 color2
+set_from_resource $green2 color10
+
+set_from_resource $yellow1 color3
+set_from_resource $yellow2 color11
+
+set_from_resource $blue1 color4
+set_from_resource $blue2 color12
+
+set_from_resource $magenta1 color5
+set_from_resource $magenta2 color13
+
+set_from_resource $cyan1 color6
+set_from_resource $cyan2 color14
+
+set_from_resource $white1 color5
+set_from_resource $white2 color15
+
 # gaps settings
 gaps inner 12
 gaps outer 12
+
+# windows colors
+# class         border  backgr. text    indicator child_border
+client.focused $yellow2 $yellow2 $yellow2 #504945 #7c6f64
+client.focused_inactive $yellow2 $yellow2 $yellow2 $black2 $black1
+client.unfocused $yellow2 $yellow2 $yellow2 $black2 $black1
 
 for_window [class=".*"] border pixel 5
 

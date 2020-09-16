@@ -4,40 +4,109 @@
 !! Set a default font and font size as below:
 *.font: monospace:size=10
 
+!*** One dark ***!
 !! special
-*.foreground:   #ABB2BF
-*.background:   #282C34
-*.cursorColor:  #ABB2BF
-
+!*.foreground:   #ABB2BF
+!*.background:   #282C34
+!*.cursorColor:  #ABB2BF
+!
 !! black
-*.color0:       #5C6370
-*.color8:       #4B5263
-
+!*.color0:       #5C6370
+!*.color8:       #4B5263
+!
 !! red
-*.color1:       #E06C75
-*.color9:       #BE5046
-
+!*.color1:       #E06C75
+!*.color9:       #BE5046
+!
 !! green
-*.color2:       #98C379
-*.color10:      #98C379
-
+!*.color2:       #98C379
+!*.color10:      #98C379
+!
 !! yellow
-*.color3:       #E5C07B
-*.color11:      #D19A66
-
+!*.color3:       #E5C07B
+!*.color11:      #D19A66
+!
 !! blue
-*.color4:       #61AFEF
-*.color12:      #61AFEF
-
+!*.color4:       #61AFEF
+!*.color12:      #61AFEF
+!
 !! magenta
-*.color5:       #C678DD
-*.color13:      #C678DD
-
+!*.color5:       #C678DD
+!*.color13:      #C678DD
+!
 !! cyan
-*.color6:       #56B6C2
-*.color14:      #56B6C2
-
+!*.color6:       #56B6C2
+!*.color14:      #56B6C2
+!
 !! white
-*.color7:       #ABB2BF
-*.color15:      #3E4452
+!*.color7:       #ABB2BF
+!*.color15:      #3E4452
 
+!* Gruvbox
+#define G_dark0         #282828
+#define G_dark1         #3c3836
+#define G_dark2         #504945
+#define G_dark3         #665c54
+#define G_dark4         #7c6f64
+
+#define G_medium        #928374
+
+#define G_light0        #fdf4c1
+#define G_light1        #ebdbb2
+#define G_light2        #d5c4a1
+#define G_light3        #bdae93
+#define G_light4        #a89984
+
+#define G_red0          #fb4934
+#define G_green0        #b8bb26
+#define G_yellow0       #fabd2f
+#define G_blue0         #83a598
+#define G_purple0       #d3869b
+#define G_aqua0         #8ec07c
+#define G_orange0       #fe8019
+
+#define G_red1          #9d0006
+#define G_green1        #79740e
+#define G_yellow1       #b57614
+#define G_blue1         #076678
+#define G_purple1       #8f3f71
+#define G_aqua1         #427b58
+#define G_orange1       #af3a03
+
+*.background: G_dark0
+*.foreground: G_light1
+*.cursorColor: G_light1
+*.fading: 40
+*.fadeColor: G_dark0
+
+! Black
+*.color0: G_dark0
+*.color8: G_dark1
+
+! Red
+*.color1: G_red0
+*.color9: G_red1
+
+! Green
+*.color2: G_green0
+*.color10: G_green1
+
+! Yellow
+*.color3: G_yellow0
+*.color11: G_yellow1
+
+! Blue
+*.color4: G_blue0
+*.color12: G_blue1
+
+! Magenta
+*.color5: G_purple0
+*.color13: G_purple1
+
+! Cyan
+*.color6: G_aqua0
+*.color14: G_aqua1
+
+! White
+*.color7: G_light0
+*.color15: G_light1
