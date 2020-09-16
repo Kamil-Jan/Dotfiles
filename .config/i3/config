@@ -48,7 +48,7 @@ client.unfocused $yellow2 $yellow2 $yellow2 $black2 $black1
 for_window [class=".*"] border pixel 5
 
 # wallpapers
-exec feh --bg-center /usr/share/wallpapers/Opal/contents/images/3840x2160.png
+exec feh --bg-center /usr/share/wallpapers/Gruvbox/wall_secondary.png
 
 # change keyboard layout
 exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:caps_toggle"
