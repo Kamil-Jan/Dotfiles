@@ -6,3 +6,4 @@ alias ll="ls -lah"
 alias la="ls -a"
 alias gs="git status"
 alias grep='grep --color=auto'
+alias cpp='cd ~/Projects/C++/'
