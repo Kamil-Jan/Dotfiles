@@ -10,7 +10,12 @@
 ;==========================================================
 
 [colors]
-font-0 = "FontAwesome:style=Regular:antialias=true:size=12;3"
+;font-0 = "FontAwesome:style=Regular:antialias=true:size=13;3"
+font-0 = mono:pixelsize=9;1
+font-1 = Inconsolata Nerd Font:size=8;1
+font-2 = siji:pixelsize=10;1
+font-3 = Symbola:pixelsize=9;1
+
 background = ${xrdb:background}
 background-alt = #444
 foreground = ${xrdb:foreground}
@@ -175,7 +180,7 @@ label-underline = ${colors.yellow}
 
 [module/memory]
 type = internal/memory
-label = %{A1:alacritty -e htop & disown:}RAM %gb_used%/%gb_total%%{A}
+label = %{A1:alacritty -e htop & disown:}RAM %gb_used%%{A}
 label-underline = ${colors.green}
 
 [module/wlan]

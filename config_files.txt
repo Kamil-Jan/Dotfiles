@@ -2,10 +2,12 @@
 /home/kamil/.config/nvim
 /home/kamil/.config/ranger
 /home/kamil/.config/zsh
-/home/kamil/.zprofile
 /home/kamil/.config/.aliases
 /home/kamil/.config/python/.pythonrc
 /home/kamil/.config/i3
 /home/kamil/.config/polybar
+/home/kamil/.config/dunst
 /home/kamil/.Xresources
 /home/kamil/.xinitrc
+/home/kamil/.xprofile
+/home/kamil/.zprofile
