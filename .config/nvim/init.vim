@@ -38,6 +38,7 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'tmhedberg/SimpylFold'                      " folding
     Plug 'unblevable/quick-scope'                    " fast navigation in a line
     Plug 'easymotion/vim-easymotion'                 " navigation within a file
+    Plug 'lilydjwg/colorizer'
 
 call plug#end()            " required
 filetype plugin indent on  " required
@@ -136,7 +137,7 @@ map <Space> <leader>
 nnoremap <CR> m`o<Esc>``
 nnoremap <S-CR> m`O<Esc>``
 
-imap Nop <Plug>IMAP_JumpForward
+"imap Nop <Plug>IMAP_JumpForward
 nmap Nop <Plug>IMAP_JumpForward
 vmap Nop <Plug>IMAP_JumpForward
 
