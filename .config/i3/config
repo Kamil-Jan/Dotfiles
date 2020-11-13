@@ -71,6 +71,11 @@ exec feh --bg-center /usr/share/wallpapers/Gruvbox/wall_secondary.png
 exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:caps_toggle"
 #------------------
 
+# i3 BATTERY POPUP
+#------------------
+#exec --no-startup-id ~/.config/i3-battery-popup/i3-battery-popup -n -L 20 -l 15 -t 60s
+#------------------
+
 # i3 WINDOW CONTROLS
 #------------------
 # --OTHER

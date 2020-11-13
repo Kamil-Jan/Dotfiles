@@ -3,3 +3,5 @@
 # dunst for notifications
 dunst &
 
+~/.config/i3-battery-popup/i3-battery-popup -n -L 20 -l 15 -t 60s &
+
