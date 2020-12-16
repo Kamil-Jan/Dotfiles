@@ -11,7 +11,8 @@ set $mod Mod4
 set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
 
 # set default font
-font pango:DejaVu Sans Mono 10
+#font pango:Roboto Mono 10
+font pango:Hack Nerd Font 10
 #------------------
 
 # COLORS
@@ -63,7 +64,8 @@ client.unfocused $yellow2 $yellow2 $yellow2 $black2 $black1
 
 # WALLPAPER
 #------------------
-exec feh --bg-center /usr/share/wallpapers/Gruvbox/wall_secondary.png
+#exec_always feh --bg-scale /usr/share/wallpapers/dusk.webp
+exec_always --no-startup-id ~/.config/i3/scripts/dynamic_wallpaper.sh /usr/share/wallpapers/Island/morning.webp /usr/share/wallpapers/Island/day.webp /usr/share/wallpapers/Island/evening.webp /usr/share/wallpapers/Island/night.webp
 #------------------
 
 # KEYBOARD LAYOUT
@@ -87,7 +89,7 @@ floating_modifier $mod
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -nb '#282828' -fn '#ebdbb2' -sb '#af3a03'
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -195,7 +197,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 #------------------
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 #------------------
 
 # --RESIZE WINDOW
