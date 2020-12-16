@@ -9,55 +9,42 @@
 ;
 ;==========================================================
 
-[colors]
-background = ${xrdb:background}
-background-alt = #444
-foreground = ${xrdb:foreground}
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
-black = ${xrdb:color0}
-red = ${xrdb:color1}
-orange = #ff7100
-green = ${xrdb:color2}
-yellow = ${xrdb:color3}
-blue = ${xrdb:color4}
-magenta = ${xrdb:color5}
-cyan = ${xrdb:color6}
-white = ${xrdb:color7}
+include-file=~/.config/polybar/colors.ini
+include-file=~/.config/polybar/modules.ini
 
 [bar/example]
 width = 100%
 height = 26
-;radius = 6.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = ${colors.magenta}
 
 border-size = 0
-border-color = #00000000
+border-color = #7c6f64
 
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 1
+module-margin-left = 0
+module-margin-right = 0
 
 font-0 = RobotoMono:style=Bold:pixelsize=9;1
 font-1 = FontAwesome5Free:style=Solid:pixelsize=11:antialias=true;1
 font-2 = FontAwesome5Brands:style=Solid:pixelsize=10:antialias=false;1
 
 modules-left = i3
-;modules-center = mpd
-modules-right = pulseaudio backlight xkeyboard cpu temperature memory wlan battery date powermenu
+modules-center = date
+modules-right = pulseaudio backlight cpu temperature xkeyboard battery wlan powermenu
 
 tray-position = right
-tray-padding = 0
+tray-detached = false
+tray-background = ${colors.dark1}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 2
 
 ;wm-restack = i3
 ;override-redirect = true
@@ -67,226 +54,3 @@ tray-padding = 0
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
-
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-; Separator in between workspaces
-; label-separator = |
-
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
-
-; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline = ${colors.cyan}
-label-focused-padding = 2
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = 2
-
-; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume>
-label-volume =  %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted =  muted
-label-muted-foreground = #666
-
-bar-volume-width = 5
-bar-volume-foreground-0 = #0000ff
-bar-volume-foreground-1 = #4169e1
-bar-volume-foreground-2 = #6495ed
-bar-volume-foreground-3 = #add8e6
-bar-volume-foreground-4 = #ffa07a
-bar-volume-foreground-5 = #dc143c
-bar-volume-foreground-6 = #ff0000
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight]
-type = internal/backlight
-card = amdgpu_bl0
-
-format =  <label>
-label = %percentage%%
-
-bar-width = 5
-bar-indicator = |
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = ${colors.foreground-alt}
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format = <label-layout><label-indicator>
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout =  %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
-[module/cpu]
-type = internal/cpu
-format = <label>
-label = %{A1:alacritty -e htop & disown:} %percentage%%%{A}
-label-underline = ${colors.orange}
-
-[module/temperature]
-type = internal/temperature
-hwmon-path = /sys/devices/pci0000:00/0000:00:01.3/0000:01:00.0/hwmon/hwmon0/temp1_input
-
-base-temperature = 20
-warn-temperature = 50
-
-label = %temperature-c%
-format = <ramp> <label>
-format-underline = ${colors.yellow}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
-
-label-warn =  %temperature-c%
-format-warn = <label-warn>
-label-warn-foreground = ${colors.red}
-label-warn-underline = ${colors.red}
-
-[module/memory]
-type = internal/memory
-label = %{A1:alacritty -e htop & disown:} %gb_used%%{A}
-label-underline = ${colors.green}
-
-[module/wlan]
-type = internal/network
-interface = wlp2s0
-interval = 3.0
-
-format-connected = <label-connected>
-format-connected-underline = ${colors.cyan}
-label-connected =  %essid%: %downspeed%
-
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %{A1:alacritty -e nmtui & disown:} no wifi%{A}
-label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/battery]
-type = internal/battery
-battery = BAT1
-adapter = ADP1
-full-at = 100
-
-format-charging =  <label-charging>
-format-charging-underline = ${colors.blue}
-
-format-discharging = <ramp-capacity> <label-discharging>
-ramp-capacity-0 = 
-ramp-capacity-0-foreground = ${colors.secondary}
-ramp-capacity-1 = 
-ramp-capacity-1-foreground = ${colors.primary}
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-4-foreground = ${colors.green}
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = "⚡"
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-[module/date]
-type = internal/date
-interval = 1
-
-date = %d %b
-date-alt = "%d.%m.%Y (%A)"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-underline = ${colors.magenta}
-label =  %date% %time%
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = " "
-label-open-foreground = ${colors.red}
-label-close =  cancel
-label-close-foreground = ${colors.red}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-menu-0-2 = hibernate
-menu-0-2-exec = menu-open-3
-
-menu-1-0 = reboot
-menu-1-0-exec = systemctl reboot
-menu-1-1 = cancel
-menu-1-1-exec = menu-open-0
-
-menu-2-0 = power off
-menu-2-0-exec = systemctl poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
-menu-3-0 = hibernate
-menu-3-0-exec = systemctl suspend
-menu-3-1 = cancel
-menu-3-1-exec = menu-open-0
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
-
-; vim:ft=dosini
