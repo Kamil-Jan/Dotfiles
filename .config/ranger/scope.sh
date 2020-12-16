@@ -73,13 +73,6 @@ handle_extension() {
                       -jpeg -tiffcompression jpeg \
                       -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
                  && exit 6 || exit 1;;
-            ## Preview as text conversion
-            #pdftotext -l 10 -nopgbrk -q -- "${FILE_PATH}" - | \
-              #fmt -w "${PV_WIDTH}" && exit 5
-            #mutool draw -F txt -i -- "${FILE_PATH}" 1-10 | \
-              #fmt -w "${PV_WIDTH}" && exit 5
-            #exiftool "${FILE_PATH}" && exit 5
-            #exit 1;;
 
         ## BitTorrent
         torrent)
