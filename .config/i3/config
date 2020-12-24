@@ -11,8 +11,7 @@ set $mod Mod4
 set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
 
 # set default font
-#font pango:Roboto Mono 10
-font pango:Hack Nerd Font 10
+font pango:JetBrains Nerd Font 10
 #------------------
 
 # COLORS
@@ -64,7 +63,7 @@ client.unfocused $yellow2 $yellow2 $yellow2 $black2 $black1
 
 # WALLPAPER
 #------------------
-#exec_always feh --bg-scale /usr/share/wallpapers/dusk.webp
+#exec_always feh --bg-scale /usr/share/wallpapers/Island/evening.webp
 exec_always --no-startup-id ~/.config/i3/scripts/dynamic_wallpaper.sh /usr/share/wallpapers/Island/morning.webp /usr/share/wallpapers/Island/day.webp /usr/share/wallpapers/Island/evening.webp /usr/share/wallpapers/Island/night.webp
 #------------------
 
@@ -169,6 +168,8 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+bindsym $mod+Tab workspace back_and_forth
+
 # Switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -250,3 +251,7 @@ bindsym $mod+b exec firefox
 bindsym $mod+t exec telegram-desktop
 #------------------
 
+# CUSTOM SCRIPTS
+#------------------
+bindsym $mod+c exec ~/.config/dmenu_scripts/edit-configs.sh
+#------------------

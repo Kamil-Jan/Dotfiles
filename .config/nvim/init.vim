@@ -129,6 +129,9 @@ autocmd FileType cpp set foldmethod=indent
 set makeprg=g++\ -std=c++17\ -Wall\ -o\ %:r.out\ %
 
 " Hot keys settings
+map j gj
+map k gk
+
 inoremap jk <esc>
 inoremap kj <esc>
 map <Space> <leader>

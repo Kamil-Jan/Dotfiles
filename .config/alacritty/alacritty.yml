@@ -36,15 +36,15 @@ font:
   size: 10
 
   normal:
-    family: RobotoMono Nerd Font
+    family: JetBrains Mono Nerd Font
     style: Regular
 
   bold:
-    family: RobotoMono Nerd Font
+    family: JetBrains Mono Nerd Font
     style: Bold
 
   italic:
-    family: RobotoMono Nerd Font
+    family: JetBrains Mono Nerd Font
     style: Italic
 
 # key_bindings
