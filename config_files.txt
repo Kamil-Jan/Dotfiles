@@ -1,4 +1,7 @@
 /home/kamil/.config/alacritty
+/home/kamil/.config/bspwm
+/home/kamil/.config/sxhkd
+/home/kamil/.config/dmenu_scripts
 /home/kamil/.config/nvim
 /home/kamil/.config/ranger
 /home/kamil/.config/zsh

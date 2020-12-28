@@ -10,7 +10,7 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 #DEFAULT_SESSION=startkde
-exec i3
+exec bspwm
 
 # merge in defaults and keymaps
 

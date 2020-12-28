@@ -227,6 +227,9 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $XDG_CONFIG_HOME/polybar/launch.sh
 #------------------
 
+# Disable ugly cursor when hovering over background
+exec_always "xsetroot -cursor_name left_ptr"
+
 # SPECIAL KEYS BINDING
 #------------------
 # Print screen
