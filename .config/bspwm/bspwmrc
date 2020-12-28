@@ -14,14 +14,13 @@ dunst &
 ~/.config/i3-battery-popup/i3-battery-popup -n -L 20 -l 15 -t 60s &
 
 # shadows and smooth workspace switching
-xcompmgr -cCfF -r7 -o 1 -l-10 -t-8 -D3 -I 0.050 -O 0.050 &
+picom --backend xrender -cCGfb -o 1 -I 0.04 -O 0.04 -D 7 --config /dev/null
 
 # change language on caps lock
 setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:caps_toggle
 
 # dynamic wallpapers
-feh --bg-scale /usr/share/wallpapers/Island/evening.webp
-#~/.config/i3/scripts/dynamic_wallpaper.sh /usr/share/wallpapers/Island/morning.webp /usr/share/wallpapers/Island/day.webp /usr/share/wallpapers/Island/evening.webp /usr/share/wallpapers/Island/night.webp
+~/.config/i3/scripts/dynamic_wallpaper.sh /usr/share/wallpapers/Island/morning.webp /usr/share/wallpapers/Island/day.webp /usr/share/wallpapers/Island/evening.webp /usr/share/wallpapers/Island/night.webp
 
 # polybar
 ~/.config/polybar/launch.sh &
@@ -34,7 +33,7 @@ xsetroot -cursor_name left_ptr
 ####################################
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
-bspc config border_width 2
+bspc config border_width 3
 bspc config window_gap 12
 
 bspc config top_padding 36
@@ -42,9 +41,16 @@ bspc config bottom_padding 12
 bspc config left_padding 12
 bspc config right_padding 12
 
+bspc config top_monocle_padding 12
+bspc config bottom_monocle_padding 12
+bspc config left_monocle_padding 12
+bspc config right_monocle_padding 12
+
 bspc config split_ratio 0.50
-bspc config borderless_monocle true
+bspc config borderless_monocle false
 bspc config gapless_monocle true
+bspc config paddingless_monocle true
+bspc config single_monocle false
 
 bspc config focused_border_color "#7c6f64"
 bspc config normal_border_color "#282828"
