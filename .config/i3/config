@@ -64,7 +64,7 @@ client.unfocused $yellow2 $yellow2 $yellow2 $black2 $black1
 # WALLPAPER
 #------------------
 #exec_always feh --bg-scale /usr/share/wallpapers/Island/evening.webp
-exec_always --no-startup-id ~/.config/i3/scripts/dynamic_wallpaper.sh /usr/share/wallpapers/Island/morning.webp /usr/share/wallpapers/Island/day.webp /usr/share/wallpapers/Island/evening.webp /usr/share/wallpapers/Island/night.webp
+exec_always --no-startup-id ~/.config/scripts/dynamic_wallpaper.sh /usr/share/wallpapers/Island/
 #------------------
 
 # KEYBOARD LAYOUT
@@ -94,7 +94,7 @@ bindsym $mod+d exec dmenu_run -nb '#282828' -fn '#ebdbb2' -sb '#af3a03'
 bindsym $mod+Return exec alacritty
 
 # i3 lock
-bindsym $mod+F1 exec $XDG_CONFIG_HOME/i3/scripts/lock.sh
+bindsym $mod+F1 exec $XDG_CONFIG_HOME/scripts/lock.sh
 #------------------
 
 # --FOCUS
@@ -256,5 +256,5 @@ bindsym $mod+t exec telegram-desktop
 
 # CUSTOM SCRIPTS
 #------------------
-bindsym $mod+c exec ~/.config/dmenu_scripts/edit-configs.sh
+bindsym $mod+c exec ~/.config/scripts/edit-configs.sh
 #------------------

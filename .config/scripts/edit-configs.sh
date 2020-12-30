@@ -2,11 +2,13 @@
 
 declare options=(
 "alacritty
+bspwm
 dunst
 i3
 neovim
 polybar
 ranger
+sxhkd
 zsh
 aliases
 xinitrc
@@ -24,6 +26,9 @@ case "$choice" in
 	;;
 	alacritty)
 		choice="$HOME/.config/alacritty/alacritty.yml"
+    ;;
+    bspwm)
+        choice="$HOME/.config/bspwm/bspwmrc"
 	;;
 	dunst)
 		choice="$HOME/.config/dunst/dunstrc"
@@ -39,6 +44,9 @@ case "$choice" in
 	;;
     ranger)
         choice="$HOME/.config/ranger/rc.conf"
+    ;;
+    sxhkd)
+        choice="$HOME/.config/sxhkd/sxhkdrc"
     ;;
 	zsh)
 		choice="$HOME/.config/zsh/.zshrc"

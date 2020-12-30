@@ -12,4 +12,7 @@ alias la="ls -a"
 
 alias gs="git status"
 
-alias grep='grep --color=auto'
+alias grep="grep --color=auto"
+
+alias blcon="bluetoothctl power on; bluetoothctl connect E0:9D:FA:65:1F:51"
+alias bldis="bluetoothctl power off"

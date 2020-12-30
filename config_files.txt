@@ -1,7 +1,6 @@
 /home/kamil/.config/alacritty
 /home/kamil/.config/bspwm
 /home/kamil/.config/sxhkd
-/home/kamil/.config/dmenu_scripts
 /home/kamil/.config/nvim
 /home/kamil/.config/ranger
 /home/kamil/.config/zsh
@@ -10,6 +9,8 @@
 /home/kamil/.config/i3
 /home/kamil/.config/polybar
 /home/kamil/.config/dunst
+/home/kamil/.config/scripts
+/home/kamil/.config/betterlockscreenrc
 /home/kamil/.Xresources
 /home/kamil/.xinitrc
 /home/kamil/.xprofile

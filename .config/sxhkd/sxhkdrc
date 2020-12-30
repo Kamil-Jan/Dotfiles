@@ -22,10 +22,10 @@ super + t
 # Custom scripts
 #######################
 super + F1
-    ~/.config/i3/scripts/lock.sh
+    betterlockscreen -l dim
 
 super + c
-    ~/.config/dmenu_scripts/edit-configs.sh
+    ~/.config/scripts/edit-configs.sh
 
 #######################
 # Special keys
