@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + d
-    dmenu_run -nb '#282828' -fn '#ebdbb2' -sb '#af3a03'
+    rofi -show-icons true -show drun
 
 # browser
 super + b

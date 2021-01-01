@@ -10,6 +10,7 @@
 /home/kamil/.config/polybar
 /home/kamil/.config/dunst
 /home/kamil/.config/scripts
+/home/kamil/.config/rofi
 /home/kamil/.config/betterlockscreenrc
 /home/kamil/.Xresources
 /home/kamil/.xinitrc

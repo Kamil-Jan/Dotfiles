@@ -18,7 +18,7 @@ zprofile
 quit"
 )
 
-choice=$(echo -e "${options[@]}" | dmenu -nb '#282828' -fn '#ebdbb2' -sb '#af3a03' -p 'Edit config file: ')
+choice=$(echo -e "${options[@]}" | rofi -columns 2 -dmenu -p 'Edit config file')
 
 case "$choice" in
 	quit)

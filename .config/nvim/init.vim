@@ -131,6 +131,9 @@ set makeprg=g++\ -std=c++17\ -Wall\ -o\ %:r.out\ %
 " Bash settings
 autocmd FileType sh set foldmethod=indent
 
+" Java settings
+autocmd FileType java set foldmethod=indent
+
 " Hot keys settings
 map j gj
 map k gk
@@ -198,6 +201,10 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:sp<CR>:exec 'term python'
 autocmd FileType cpp map <buffer> <F9> :w<CR>:make<CR>
 autocmd FileType cpp map <buffer> <F10> :sp<CR>:term ./%:r.out<CR>
 
+" compile java file using <F9>. Run using <F10>
+autocmd FileType java map <buffer> <F9> :w<CR>:sp<CR>:exec 'term javac' shellescape(@%, 1)<CR>
+autocmd FileType java map <buffer> <F10> :sp<CR>:exec 'term java' shellescape(expand("%:r"))<CR>
+
 " run .m file using <F9>
 autocmd FileType matlab map <buffer> <F9> :w<CR>:sp<CR>:exec 'term octave' shellescape(@%, 1)<CR>
 
@@ -260,11 +267,12 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-nmap <silent> <C-f> :FZF<CR>
-nmap <silent> <leader>s :Lines<CR>
+nmap <silent> <C-f> :Files<CR>
+nmap <silent> <C-s> :Lines<CR>
 
 " Border color
-let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp', 'options': '--no-preview'} }
+" let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp', 'options': '--no-preview'} }
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp'} }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =

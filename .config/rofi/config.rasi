@@ -1,0 +1,11 @@
+configuration {
+    modi: "drun";
+    width: 25;
+    lines: 5;
+    columns: 1;
+    terminal: "alacritty";
+    matching: "fuzzy";
+    case-sensitive: false;
+    theme: "gruvbox-dark.rasi";
+	font: "JetBrains Mono Nerd Font 12";
+}

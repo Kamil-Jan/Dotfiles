@@ -12,7 +12,7 @@ dunst &
 
 # low battery notification
 ps -aux | grep battery_popup.sh | grep -v grep | awk '{ print $2 }' | xargs kill -9
-~/.config/scripts/battery_popup.sh -L 80 -d 5 -t 1m &
+~/.config/scripts/battery_popup.sh -L 20 -d 1 -t 1m &
 
 # shadows and smooth workspace switching
 picom --backend xrender -cCGfb -o 1 -I 0.04 -O 0.04 -D 7 --config /dev/null
