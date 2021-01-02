@@ -8,6 +8,7 @@ i3
 neovim
 polybar
 ranger
+rofi
 sxhkd
 zsh
 aliases
@@ -18,7 +19,7 @@ zprofile
 quit"
 )
 
-choice=$(echo -e "${options[@]}" | rofi -columns 2 -dmenu -p 'Edit config file')
+choice=$(echo -e "${options[@]}" | rofi -columns 2 -i -dmenu -p 'Edit config file')
 
 case "$choice" in
 	quit)
@@ -44,6 +45,9 @@ case "$choice" in
 	;;
     ranger)
         choice="$HOME/.config/ranger/rc.conf"
+    ;;
+    rofi)
+        choice="$HOME/.config/rofi/config.rasi"
     ;;
     sxhkd)
         choice="$HOME/.config/sxhkd/sxhkdrc"

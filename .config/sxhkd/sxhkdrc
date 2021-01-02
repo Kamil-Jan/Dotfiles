@@ -24,8 +24,11 @@ super + t
 super + F1
     betterlockscreen -l dim
 
-super + c
+super + e
     ~/.config/scripts/edit-configs.sh
+
+super + c
+    ~/.config/scripts/copy_output.sh
 
 #######################
 # Special keys
