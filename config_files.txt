@@ -12,6 +12,7 @@
 /home/kamil/.config/scripts
 /home/kamil/.config/rofi
 /home/kamil/.config/betterlockscreenrc
+/home/kamil/.config/picom
 /home/kamil/.Xresources
 /home/kamil/.xinitrc
 /home/kamil/.xprofile
