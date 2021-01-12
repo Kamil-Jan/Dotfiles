@@ -8,6 +8,7 @@ configuration {
     case-sensitive: false;
     theme: "gruvbox-dark.rasi";
     font: "JetBrains Mono Nerd Font 12";
+    drun-display-format: "{name} [<span weight='light' size='small'>({generic})</span>]";
     kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
     kb-row-down: "Down,Control+j";
     kb-row-left: "Control+h";
