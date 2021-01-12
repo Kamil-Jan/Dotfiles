@@ -36,16 +36,20 @@ font:
   size: 10
 
   normal:
-    family: JetBrains Mono Nerd Font
+    family: BlexMono Nerd Font
     style: Regular
 
   bold:
-    family: JetBrains Mono Nerd Font
+    family: BlexMono Nerd Font
     style: Bold
 
   italic:
-    family: JetBrains Mono Nerd Font
+    family: BlexMono Nerd Font
     style: Italic
+
+  bold-italic:
+    family: BlexMono Nerd Font
+    style: Bold Italic
 
 # key_bindings
 key_bindings:
