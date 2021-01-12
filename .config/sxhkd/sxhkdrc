@@ -30,6 +30,12 @@ super + e
 super + c
     ~/.config/scripts/copy_output.sh
 
+super + shift + e
+    rofi -width 15pt -lines 3 -show power-menu -modi "power-menu:rofi-power-menu --choices=shutdown/reboot/logout"
+
+
+
+
 #######################
 # Special keys
 #######################
