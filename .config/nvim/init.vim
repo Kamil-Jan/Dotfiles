@@ -140,7 +140,6 @@ map k gk
 
 inoremap jk <esc>
 inoremap kj <esc>
-map <Space> <leader>
 
 " map adding blank line.
 nnoremap <CR> m`o<Esc>``
@@ -157,19 +156,14 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " resize windows
-nnoremap <silent> <M-j> :resize -2<CR>
-nnoremap <silent> <M-k> :resize +2<CR>
-nnoremap <silent> <M-l> :vertical resize -2<CR>
-nnoremap <silent> <M-h> :vertical resize +2<CR>
+nnoremap <silent> <C-M-j> :resize -2<CR>
+nnoremap <silent> <C-M-k> :resize +2<CR>
+nnoremap <silent> <C-M-l> :vertical resize -2<CR>
+nnoremap <silent> <C-M-h> :vertical resize +2<CR>
 
 " moving lines
 xnoremap <silent> K :move '<-2<CR>gv-gv
 xnoremap <silent> J :move '<+1<CR>gv-gv
-
-" tab navigations
-nnoremap <silent> <leader><TAB> :bnext<CR>
-nnoremap <silent> <S-TAB> :bprev<CR>
-nnoremap <silent> <C-T> :tabnew<CR>
 
 " copy and paste to/from clipboard
 noremap <leader>y "+y
@@ -202,7 +196,7 @@ autocmd FileType cpp map <buffer> <F9> :w<CR>:make<CR>
 autocmd FileType cpp map <buffer> <F10> :sp<CR>:term ./%:r.out<CR>
 
 " compile java file using <F9>. Run using <F10>
-autocmd FileType java map <buffer> <F9> :w<CR>:sp<CR>:exec 'term javac' shellescape(@%, 1)<CR>
+autocmd FileType java map <buffer> <F9> :w<CR>:sp<CR>:exec 'term javac -Xlint' shellescape(@%, 1)<CR>
 autocmd FileType java map <buffer> <F10> :sp<CR>:exec 'term java' shellescape(expand("%:r"))<CR>
 
 " run .m file using <F9>
@@ -328,7 +322,7 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
