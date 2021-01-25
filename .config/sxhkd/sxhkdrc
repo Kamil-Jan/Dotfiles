@@ -103,10 +103,6 @@ super + alt + {h,j,k,l}
 super + alt + space
     bspc node -p cancel
 
-# swap the current node and the biggest node
-super + space
-    bspc node -s biggest.local
-
 #######################
 # move/resize
 #######################
@@ -132,4 +128,16 @@ super + ctrl + shift + {h,j,k,l}
 # move a floating window
 super + shift + alt + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# swap the current node and the biggest node
+super + space
+    bspc node -s biggest.local
+
+# Rotate tree
+super + shift + {d, a}
+    bspc node @/ -C {forward,backward}
+
+# Move the focused window to the last preselection are
+super + p
+    bspc node -n last.\!automatic -t tiled
 

@@ -20,8 +20,6 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'junegunn/gv.vim'
 " Themes
     Plug 'morhetz/gruvbox'
-    Plug 'cormacrelf/vim-colors-github'
-    Plug 'joshdick/onedark.vim'
 " Mark Down
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
@@ -198,6 +196,10 @@ autocmd FileType cpp map <buffer> <F10> :sp<CR>:term ./%:r.out<CR>
 " compile java file using <F9>. Run using <F10>
 autocmd FileType java map <buffer> <F9> :w<CR>:sp<CR>:exec 'term javac -Xlint' shellescape(@%, 1)<CR>
 autocmd FileType java map <buffer> <F10> :sp<CR>:exec 'term java' shellescape(expand("%:r"))<CR>
+
+" compile pascal file using <F9>. Run using <F10>
+autocmd FileType pascal map <buffer> <F9> :w<CR>:sp<CR>:exec 'term fpc ' shellescape(@%, 1)<CR>
+autocmd FileType pascal map <buffer> <F10> :sp<CR>:term ./%:r<CR>
 
 " run .m file using <F9>
 autocmd FileType matlab map <buffer> <F9> :w<CR>:sp<CR>:exec 'term octave' shellescape(@%, 1)<CR>
