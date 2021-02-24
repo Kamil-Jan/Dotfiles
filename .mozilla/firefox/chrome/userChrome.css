@@ -14,7 +14,7 @@
   --mff-tab-font-weight: 600;
   --mff-tab-height: 32px;
   --mff-tab-pinned-bg: #282828;
-  --mff-tab-selected-bg: #af3a03;
+  --mff-tab-selected-bg: #3c3836;
   --mff-tab-soundplaying-bg: #9d0006;
   --mff-urlbar-color: #fbf1c7;
   --mff-urlbar-focused-color: #ebdbb2;
@@ -227,7 +227,7 @@ toolbar {
 }
 
 #urlbar-background {
-  opacity: .98 !important;
+  opacity: 1.0 !important;
 }
 
 #navigator-toolbox, toolbaritem {
