@@ -136,9 +136,6 @@ autocmd FileType java set foldmethod=indent
 map j gj
 map k gk
 
-inoremap jk <esc>
-inoremap kj <esc>
-
 " map adding blank line.
 nnoremap <CR> m`o<Esc>``
 nnoremap <S-CR> m`O<Esc>``
@@ -260,10 +257,10 @@ let g:qs_max_chars=150
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
+  \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-nmap <silent> <C-f> :Files<CR>
+nmap <silent> <C-f> :GFiles<CR>
 nmap <silent> <C-s> :Lines<CR>
 
 " Border color
@@ -292,7 +289,7 @@ let g:tex_flavor='latex'
 let g:vimtex_view_method='mupdf'
 
 " Snippets settings
-let g:UltiSnipsExpandTrigger="<S-tab>"
+let g:UltiSnipsExpandTrigger="<M-Tab>"
 let g:UltiSnipsJumpForwardTrigger="<M-j>"
 let g:UltiSnipsJumpBackwardTrigger="<M-k>"
 let g:coc_snippet_next = '<M-j>'
@@ -324,6 +321,8 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 function! s:check_back_space() abort

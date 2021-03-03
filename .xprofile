@@ -1,9 +1,21 @@
 #!/usr/bin/env zsh
 
-# dunst for notifications
-#dunst &
+# notification daemon
+dunst &
 
-#xcompmgr -cCfF -r7 -o 1 -l-10 -t-8 -D3 -I 0.050 -O 0.050 &
+# low battery notification
+ps -aux | grep battery_popup.sh | grep -v grep | awk '{ print $2 }' | xargs kill -9
+~/.config/scripts/battery_popup.sh -L 20 -d 1 -t 1m &
 
-#~/.config/i3-battery-popup/i3-battery-popup -n -L 20 -l 15 -t 60s &
+# shadows and smooth workspace switching
+#picom --config ~/.config/picom/picom.conf &
+
+# change language on caps lock
+setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:shift_caps_toggle caps:escape &
+
+# dynamic wallpapers
+feh --bg-scale /usr/share/wallpapers/sea.jpg &
+
+# Disable ugly cursor when hovering over background
+xsetroot -cursor_name left_ptr &
 

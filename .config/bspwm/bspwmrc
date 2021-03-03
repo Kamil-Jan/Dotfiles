@@ -21,7 +21,7 @@ ps -aux | grep battery_popup.sh | grep -v grep | awk '{ print $2 }' | xargs kill
 picom --experimental-backends --config ~/.config/picom/picom.conf &
 
 # change language on caps lock
-setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:caps_toggle
+setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:shift_caps_toggle caps:escape
 
 # dynamic wallpapers
 feh --bg-scale /usr/share/wallpapers/sea.jpg

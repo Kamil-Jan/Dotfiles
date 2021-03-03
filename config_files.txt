@@ -9,6 +9,7 @@
 /home/kamil/.config/i3
 /home/kamil/.config/polybar
 /home/kamil/.config/dunst
+/home/kamil/.config/dwm
 /home/kamil/.config/scripts
 /home/kamil/.config/rofi
 /home/kamil/.config/betterlockscreenrc

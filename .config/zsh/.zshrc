@@ -55,8 +55,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # Keybindings section
 bindkey -v
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey -M viins 'kj' vi-cmd-mode
 
 # Alias section
 if [ -f $XDG_CONFIG_HOME/.aliases ]; then

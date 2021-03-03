@@ -4,6 +4,9 @@
 #
 # Executed by startx (run your window manager from here)
 
+. "$HOME/.xprofile"
+
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
-exec bspwm
+~/.config/dwm/startdwm.sh
+#exec dwm
 
