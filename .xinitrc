@@ -8,5 +8,5 @@
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 ~/.config/dwm/startdwm.sh
-#exec dwm
+#exec bspwm
 

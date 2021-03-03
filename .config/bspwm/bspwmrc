@@ -7,30 +7,11 @@
 # hotkeys daemon
 sxhkd &
 
-# notification daemon
-dunst &
-
-# color temperature adjuster
-#redshift &
-
-# low battery notification
-ps -aux | grep battery_popup.sh | grep -v grep | awk '{ print $2 }' | xargs kill -9
-~/.config/scripts/battery_popup.sh -L 20 -d 1 -t 1m &
-
 # shadows and smooth workspace switching
 picom --experimental-backends --config ~/.config/picom/picom.conf &
 
-# change language on caps lock
-setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:shift_caps_toggle caps:escape
-
-# dynamic wallpapers
-feh --bg-scale /usr/share/wallpapers/sea.jpg
-
 # polybar
 ~/.config/polybar/launch.sh &
-
-# Disable ugly cursor when hovering over background
-xsetroot -cursor_name left_ptr &
 
 # Fix displaying Java applications
 wmname LG3D &
