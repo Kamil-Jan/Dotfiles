@@ -10,7 +10,7 @@
     padding = 10
     horizontal_padding = 10
     frame_width = 3
-    frame_color = "#7c6f64"
+    frame_color = "#fe8019"
 
     separator_color = frame
     sort = yes
@@ -41,7 +41,7 @@
     stack_duplicates = false
     hide_duplicate_count = true
     show_indicators = no
-    icon_position = left
+    icon_position = off
     min_icon_size = 0
     max_icon_size = 32
 
@@ -50,7 +50,7 @@
     history_length = 20
 
     dmenu = /usr/bin/dmenu -p dunst:
-    browser = /usr/bin/chromium -new-tab
+    browser = /usr/bin/firefox -new-tab
     always_run_script = true
 
     title = Dunst
@@ -90,13 +90,13 @@
 [urgency_low]
     background = "#282828"
     foreground = "#ebdbb2"
-    frame_color = "#7c6f64"
+    frame_color = "#fe8019"
     timeout = 5
 
 [urgency_normal]
     background = "#282828"
     foreground = "#ebdbb2"
-    frame_color = "#7c6f64"
+    frame_color = "#fe8019"
     timeout = 5
 
 [urgency_critical]
