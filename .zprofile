@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 export EDITOR="nvim"
 export VIEWER="nvim"
 export VISUAL="nvim"

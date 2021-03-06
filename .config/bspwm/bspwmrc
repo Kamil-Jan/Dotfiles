@@ -7,9 +7,6 @@
 # hotkeys daemon
 sxhkd &
 
-# shadows and smooth workspace switching
-picom --experimental-backends --config ~/.config/picom/picom.conf &
-
 # polybar
 ~/.config/polybar/launch.sh &
 

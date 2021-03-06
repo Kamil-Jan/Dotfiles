@@ -10,10 +10,13 @@
 /home/kamil/.config/polybar
 /home/kamil/.config/dunst
 /home/kamil/.config/dwm
+/home/kamil/.config/dwmblocks
 /home/kamil/.config/scripts
 /home/kamil/.config/rofi
 /home/kamil/.config/betterlockscreenrc
 /home/kamil/.config/picom
+/home/kamil/.local/bin/statusbar
+/home/kamil/.local/share/emoji
 /home/kamil/.Xresources
 /home/kamil/.xinitrc
 /home/kamil/.xprofile
