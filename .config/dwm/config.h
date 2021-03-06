@@ -5,21 +5,25 @@
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 12;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 12;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 12;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 12;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih    = 15;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 15;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 15;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 15;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = {
+    "BlexMono Nerd Font:size=11",
+    "JoyPixels:pixelsize=12:antialias=true:autohint=true"
+    //"FontAwesome5Free:style=Solid:pixelsize=12:antialias=true;1"
+};
+static const char dmenufont[]       = "BlexMono Nerd Font:size=11";
 static const char normbgcolor[]     = "#282828";
-static const char normbordercolor[] = "#282828";
+static const char normbordercolor[] = "#3c3836";
 static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#fdf4c1";
-static const char selbgcolor[]      = "#444";
-static const char selbordercolor[]  = "#7c6f64";
+static const char selfgcolor[]      = "#282828";
+static const char selbgcolor[]      = "#fe8019";
+static const char selbordercolor[]  = "#fe8019";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -88,6 +92,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          SHCMD("killall xinit") },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },
+	{ MODKEY,                       XK_e,      spawn,          SHCMD("dmenuunicode") },
 	{ MODKEY,			            XK_t,	   setlayout,	   {.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		        XK_t,	   setlayout,	   {.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,			            XK_y,	   setlayout,	   {.v = &layouts[2]} }, /* spiral */
@@ -105,6 +110,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_v,      focusmaster,    {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("firefox") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_m,      spawn,          SHCMD("telegram-desktop") },
@@ -117,13 +123,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
     { MODKEY,                       XK_F1,     spawn,          SHCMD("betterlockscreen -l dim") },
-	{ 0, XF86XK_AudioMute,		    spawn,		SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
-	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%") },
-	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%") },
-	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("light -A 5") },
-	{ 0, XF86XK_MonBrightnessDown,	spawn,		SHCMD("light -U 5") },
-	{ 0, XK_Print,	                spawn,		SHCMD("scrot /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'") },
-	{ ShiftMask, XK_Print,	        spawn,		SHCMD("scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'") },
+    { ShiftMask,    XK_Escape,   spawn,     SHCMD("xkb-switch -n; kill -41 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioMute,		    spawn,	   SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioRaiseVolume,	spawn,	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioLowerVolume,	spawn,	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_MonBrightnessUp,	spawn,	   SHCMD("light -A 5; kill -46 $(pidof dwmblocks)") },
+	{ 0, XF86XK_MonBrightnessDown,	spawn,	   SHCMD("light -U 5; kill -46 $(pidof dwmblocks)") },
+	{ 0, XK_Print,	                spawn,	   SHCMD("scrot /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'") },
+	{ ShiftMask, XK_Print,	        spawn,	   SHCMD("scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -139,6 +146,15 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
+#ifndef __OpenBSD__
+	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkStatusText,        0,              Button1,        sigdwmblocks,   {.i = 1} },
+	{ ClkStatusText,        0,              Button2,        sigdwmblocks,   {.i = 2} },
+	{ ClkStatusText,        0,              Button3,        sigdwmblocks,   {.i = 3} },
+	{ ClkStatusText,        0,              Button4,        sigdwmblocks,   {.i = 4} },
+	{ ClkStatusText,        0,              Button5,        sigdwmblocks,   {.i = 5} },
+	{ ClkStatusText,        ShiftMask,      Button1,        sigdwmblocks,   {.i = 6} },
+#endif
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },

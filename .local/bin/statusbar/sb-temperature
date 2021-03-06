@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case $BUTTON in
+    1) setsid -f "$TERMINAL" -e htop ;;
+    3) notify-send "🌡️ Temperature module
+- Shows CPU temperature in °C
+- Left click to open 'htop'" ;;
+    6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+temp_path=/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp2_input
+echo 🌡 $(bc <<< "scale=2; $(cat $temp_path)/1000")°C

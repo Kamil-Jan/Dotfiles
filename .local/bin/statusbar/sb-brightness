@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+case $BUTTON in
+    3) notify-send "🔆 Brightness module
+- Shows current brightness" ;;
+    6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+printf "🔆 %.*f%%" 0 $(light -G)
+

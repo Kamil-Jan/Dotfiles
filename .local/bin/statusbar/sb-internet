@@ -1,0 +1,18 @@
+#!/bin/sh
+
+case $BUTTON in
+  	1) "$TERMINAL" -e nmtui; pkill -RTMIN+4 dwmblocks ;;
+	3) notify-send "🌐 Internet module" "\- Left click to connect
+❎: no wifi connection
+📶: wifi connection with quality
+" ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
+	down) wifiicon="❎ no wifi" ;;
+	up) wifiicon="📶 $(iwgetid -r) $(bc <<< "scale=2; $(cat /proc/net/wireless | grep "wlp2s0:" | awk '{ print $3 }')/8.0") Mb/s" ;;
+esac
+
+printf "%s" "$wifiicon"
+

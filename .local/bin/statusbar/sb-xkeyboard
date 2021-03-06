@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case $BUTTON in
+    1) xkb-switch -n; pkill -41 $(pidof dwmblocks) ;;
+    3) notify-send "⌨️ Xkeyboard module
+- Left click to toggle layout" ;;
+    6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+xkblayout-state print "⌨ %s"
+
