@@ -1,1 +1,4 @@
 .config/nvim/spell
+*.orig
+*.rej
+*.o
