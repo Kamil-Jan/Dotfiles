@@ -7,7 +7,7 @@ static const Block blocks[] = {
     {"",        "sb-cpu-usage",    10,                  14},
     {"",        "sb-temperature",  10,                  18},
     {"",        "sb-battery",      10,                  3},
-    {"",        "sb-internet",     5,                  4},
+    {"",        "sb-internet",     3,                   4},
     {"",        "sb-date",	       60,                  1},
 };
 

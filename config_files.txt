@@ -11,6 +11,7 @@
 /home/kamil/.config/dunst
 /home/kamil/.config/dwm
 /home/kamil/.config/dwmblocks
+/home/kamil/.config/dmenu
 /home/kamil/.config/scripts
 /home/kamil/.config/rofi
 /home/kamil/.config/betterlockscreenrc

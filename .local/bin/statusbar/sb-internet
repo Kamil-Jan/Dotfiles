@@ -9,9 +9,21 @@ case $BUTTON in
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
+update() {
+    sum=0
+    for arg; do
+        read -r i < "$arg"
+        sum=$(( sum + i ))
+    done
+    cache=${XDG_CACHE_HOME:=$HOME/.cache}/${1##*/}
+    [ -f "$cache" ] && read -r old < "$cache" || old=0
+    printf %d\\n "$sum" > "$cache"
+    printf %d\\n $(( sum - old ))
+}
+
 case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
 	down) wifiicon="❎ no wifi" ;;
-	up) wifiicon="📶 $(iwgetid -r) $(bc <<< "scale=2; $(cat /proc/net/wireless | grep "wlp2s0:" | awk '{ print $3 }')/8.0") Mb/s" ;;
+    up) wifiicon="📶 $(iwgetid -r) $(numfmt --to=iec $(update /sys/class/net/[ew]*/statistics/rx_bytes) | sed 's/\(^[0-9,]\+\)/\1 /')B/s" ;;
 esac
 
 printf "%s" "$wifiicon"

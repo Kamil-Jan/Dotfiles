@@ -17,7 +17,6 @@ static const char *fonts[]          = {
     "JoyPixels:pixelsize=12:antialias=true:autohint=true"
     //"FontAwesome5Free:style=Solid:pixelsize=12:antialias=true;1"
 };
-static const char dmenufont[]       = "BlexMono Nerd Font:size=11";
 static const char normbgcolor[]     = "#282828";
 static const char normbordercolor[] = "#3c3836";
 static const char normfgcolor[]     = "#ebdbb2";
@@ -81,8 +80,6 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
 
 #include <X11/XF86keysym.h>
@@ -104,7 +101,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_o,      incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
