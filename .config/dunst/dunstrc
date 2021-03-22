@@ -38,10 +38,10 @@
     word_wrap = yes
     ellipsize = middle
     ignore_newline = no
-    stack_duplicates = false
+    stack_duplicates = true
     hide_duplicate_count = true
-    show_indicators = no
-    icon_position = off
+    show_indicators = yes
+    icon_position = left
     min_icon_size = 0
     max_icon_size = 32
 
@@ -105,6 +105,9 @@
     frame_color = "#ff0000"
     timeout = 10
     #icon = /path/to/icon
+
+[notify-send]
+
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
