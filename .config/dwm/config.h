@@ -37,9 +37,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class                   instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",                  NULL,       NULL,       0,            1,           -1 },
+	{ "SimpleScreenRecorder",  NULL,       NULL,       0,            1,           -1 }
 };
 
 /* layout(s) */
@@ -102,6 +102,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
+	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -120,7 +121,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
     { MODKEY,                       XK_F1,     spawn,          SHCMD("betterlockscreen -l dim") },
-    { ShiftMask,    XK_Escape,   spawn,     SHCMD("xkb-switch -n; kill -41 $(pidof dwmblocks)") },
+    { ShiftMask,                    XK_Escape, spawn,          SHCMD("xkb-switch -n; kill -41 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioMute,		    spawn,	   SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,	   SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%; kill -44 $(pidof dwmblocks)") },
