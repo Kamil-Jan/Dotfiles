@@ -20,6 +20,7 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'junegunn/gv.vim'
 " Themes
     Plug 'morhetz/gruvbox'
+    Plug 'joshdick/onedark.vim'
 " Mark Down
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
@@ -37,6 +38,8 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'unblevable/quick-scope'                    " fast navigation in a line
     Plug 'easymotion/vim-easymotion'                 " navigation within a file
     Plug 'lilydjwg/colorizer'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call plug#end()            " required
 filetype plugin indent on  " required
@@ -156,6 +159,11 @@ nnoremap <silent> <C-M-k> :resize +2<CR>
 nnoremap <silent> <C-M-l> :vertical resize -2<CR>
 nnoremap <silent> <C-M-h> :vertical resize +2<CR>
 
+" tab navigations
+nnoremap <silent> <C-t> :tabnew<CR>
+nnoremap <silent> <M-Tab> :tabnext<CR>
+nnoremap <silent> <C-Tab> :tabprev<CR>
+
 " moving lines
 xnoremap <silent> K :move '<-2<CR>gv-gv
 xnoremap <silent> J :move '<+1<CR>gv-gv
@@ -189,6 +197,7 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:sp<CR>:exec 'term python'
 " compile C++ file using <F9>. Run using <F10>
 autocmd FileType cpp map <buffer> <F9> :w<CR>:make<CR>
 autocmd FileType cpp map <buffer> <F10> :sp<CR>:term ./%:r.out<CR>
+autocmd FileType cpp map <buffer> <F11> :!g++ `pkg-config --cflags sdl2 SDL2_ttf` -MMD -MP -std=c++17 -Wall % -o %:r.out -lSDL2 -lSDL2_ttf<CR>
 
 " compile java file using <F9>. Run using <F10>
 autocmd FileType java map <buffer> <F9> :w<CR>:sp<CR>:exec 'term javac -Xlint' shellescape(@%, 1)<CR>
@@ -217,15 +226,14 @@ map :W <Nop>
 
 " Statusline settings.
 set laststatus=2
-set statusline =%.20F
-set statusline +=\ %15{fugitive#statusline()}
+set statusline =
+set statusline +=%<%f\ \|
+set statusline +=%{strlen(&filetype)?'\ '.WebDevIconsGetFileTypeSymbol().'\ '.&filetype.'\ \|':''}
+set statusline +=\ %{strlen(FugitiveHead())?'\ '.FugitiveHead().'\ \|\ ':''}
 set statusline +=%=
 set statusline +=%-8.(%l,%c%V%)
 set statusline +=\ %-4L
 set statusline +=\ %-4P
-if g:colors_name == "github"
-    hi StatusLine guibg=white guifg=black
-endif
 
 " Git settings.
 let g:signify_sign_add               = '+'
