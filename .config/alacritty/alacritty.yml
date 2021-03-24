@@ -56,5 +56,5 @@ key_bindings:
     - { key: K, mods: Alt, action: ScrollLineUp }
     - { key: J, mods: Alt, action: ScrollLineDown }
 
-background_opacity: 0.8
+background_opacity: 1
 

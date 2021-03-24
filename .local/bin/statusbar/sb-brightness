@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/sh
 
 case $BUTTON in
     3) notify-send "🔆 Brightness module

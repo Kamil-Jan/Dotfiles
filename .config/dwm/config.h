@@ -108,6 +108,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_c,      spawn,          {0} },
 	{ MODKEY,                       XK_v,      focusmaster,    {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("firefox") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
