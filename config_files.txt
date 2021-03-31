@@ -12,6 +12,7 @@
 /home/kamil/.config/dwm
 /home/kamil/.config/dwmblocks
 /home/kamil/.config/dmenu
+/home/kamil/.config/st
 /home/kamil/.config/rofi
 /home/kamil/.config/betterlockscreenrc
 /home/kamil/.config/picom

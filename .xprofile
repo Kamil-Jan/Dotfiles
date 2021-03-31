@@ -5,7 +5,7 @@ dunst &
 
 # low battery notification
 ps -aux | grep battery_popup.sh | grep -v grep | awk '{ print $2 }' | xargs kill -9
-~/.config/scripts/battery_popup.sh -L 20 -d 1 -t 1m &
+battery_popup -L 20 -d 1 -t 1m &
 
 # shadows and smooth workspace switching
 picom --experimental-backends --config ~/.config/picom/picom.conf &
@@ -18,7 +18,7 @@ light -S 30%
 setxkbmap -model pc104 -layout us,ru -variant ,, -option caps:swapescape &
 
 # dynamic wallpapers
-feh --bg-scale /usr/share/wallpapers/orange_circle.png &
+feh --bg-scale /usr/share/wallpapers/forest.jpg &
 
 # Disable ugly cursor when hovering over background
 xsetroot -cursor_name left_ptr &

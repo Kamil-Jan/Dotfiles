@@ -10,7 +10,6 @@
     padding = 10
     horizontal_padding = 10
     frame_width = 3
-    frame_color = "#fe8019"
 
     separator_color = frame
     sort = yes
@@ -88,15 +87,27 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#282828"
-    foreground = "#ebdbb2"
-    frame_color = "#fe8019"
+    # Everforest
+    background = "#2f383e"
+    foreground = "#d3c6aa"
+    frame_color = "#a7c080"
+
+    # Gruvbox
+    #background = "#282828"
+    #foreground = "#ebdbb2"
+    #frame_color = "#fe8019"
     timeout = 5
 
 [urgency_normal]
-    background = "#282828"
-    foreground = "#ebdbb2"
-    frame_color = "#fe8019"
+    # Everforest
+    background = "#2f383e"
+    foreground = "#d3c6aa"
+    frame_color = "#a7c080"
+
+    # Gruvbox
+    #background = "#282828"
+    #foreground = "#ebdbb2"
+    #frame_color = "#fe8019"
     timeout = 5
 
 [urgency_critical]

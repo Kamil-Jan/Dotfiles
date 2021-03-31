@@ -20,7 +20,9 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'junegunn/gv.vim'
 " Themes
     Plug 'morhetz/gruvbox'
-    Plug 'joshdick/onedark.vim'
+    Plug 'sainnhe/everforest'
+    Plug 'sainnhe/sonokai'
+    Plug 'dracula/vim'
 " Mark Down
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
@@ -39,7 +41,7 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'easymotion/vim-easymotion'                 " navigation within a file
     Plug 'lilydjwg/colorizer'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call plug#end()            " required
 filetype plugin indent on  " required
@@ -57,7 +59,8 @@ set splitright
 set splitbelow
 
 " scheme and airline settings
-colorscheme gruvbox
+set termguicolors
+colorscheme everforest
 set bg=dark
 
 " encoding settings
@@ -293,6 +296,7 @@ let g:fzf_colors =
 
 " LaTeX settings
 let g:vimtex_fold_enabled=1
+let g:vimtex_fold_manual=1
 let g:tex_flavor='latex'
 let g:vimtex_view_method='mupdf'
 

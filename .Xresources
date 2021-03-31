@@ -1,113 +1,90 @@
 !! Transparency (0-1):
-*.alpha: 0.8
+*.alpha: 1
 
 !! Set a default font and font size as below:
-*.font: monospace:size=10
+*.font: Caskaydia Cove Nerd Font:size=17:antialias=true:autohint=true
 
-!*** One dark ***!
-!! special
-!*.foreground:   #ABB2BF
-!*.background:   #282C34
-!*.cursorColor:  #ABB2BF
-!
-!! black
-!*.color0:       #5C6370
-!*.color8:       #4B5263
-!
-!! red
-!*.color1:       #E06C75
-!*.color9:       #BE5046
-!
-!! green
-!*.color2:       #98C379
-!*.color10:      #98C379
-!
-!! yellow
-!*.color3:       #E5C07B
-!*.color11:      #D19A66
-!
-!! blue
-!*.color4:       #61AFEF
-!*.color12:      #61AFEF
-!
-!! magenta
-!*.color5:       #C678DD
-!*.color13:      #C678DD
-!
-!! cyan
-!*.color6:       #56B6C2
-!*.color14:      #56B6C2
-!
-!! white
-!*.color7:       #ABB2BF
-!*.color15:      #3E4452
+!* Gruvbox dark
+!*.color0: #282828
+!*.color1: #cc241d
+!*.color2: #98971a
+!*.color3: #d79921
+!*.color4: #458588
+!*.color5: #b16286
+!*.color6: #689d6a
+!*.color7: #a89984
+!*.color8: #928374
+!*.color9: #fb4934
+!*.color10: #b8bb26
+!*.color11: #fabd2f
+!*.color12: #83a598
+!*.color13: #d3869b
+!*.color14: #8ec07c
+!*.color15: #ebdbb2
+!*.background: #282828
+!*.foreground: #ebdbb2
+!*.cursorColor: white
 
-!* Gruvbox
-#define G_dark0         #282828
-#define G_dark1         #3c3836
-#define G_dark2         #504945
-#define G_dark3         #665c54
-#define G_dark4         #7c6f64
+!* Gruvbox light
+!*.color0: #fbf1c7
+!*.color1: #cc241d
+!*.color2: #98971a
+!*.color3: #d79921
+!*.color4: #458588
+!*.color5: #b16286
+!*.color6: #689d6a
+!*.color7: #7c6f64
+!*.color8: #928374
+!*.color9: #9d0006
+!*.color10: #79740e
+!*.color11: #b57614
+!*.color12: #076678
+!*.color13: #8f3f71
+!*.color14: #427b58
+!*.color15: #3c3836
+!*.background: #fbf1c7
+!*.foreground: #282828
+!*.cursorColor: #282828
 
-#define G_medium        #928374
+!* Dracula
+!*.color0:     #000000
+!*.color1:     #ff5555
+!*.color2:     #50fa7b
+!*.color3:     #f1fa8c
+!*.color4:     #bd93f9
+!*.color5:     #ff79c6
+!*.color6:     #8be9fd
+!*.color7:     #bfbfbf
+!*.color8:     #4d4d4d
+!*.color9:     #ff6e67
+!*.color10:    #5af78e
+!*.color11:    #f4f99d
+!*.color12:    #caa9fa
+!*.color13:    #ff92d0
+!*.color14:    #9aedfe
+!*.color15:    #e6e6e6
+!*.foreground: #f8f8f2
+!*.background: #282a36
+!*.cursorColor: white
 
-#define G_light0        #fdf4c1
-#define G_light1        #ebdbb2
-#define G_light2        #d5c4a1
-#define G_light3        #bdae93
-#define G_light4        #a89984
-
-#define G_red0          #fb4934
-#define G_green0        #b8bb26
-#define G_yellow0       #fabd2f
-#define G_blue0         #83a598
-#define G_purple0       #d3869b
-#define G_aqua0         #8ec07c
-#define G_orange0       #fe8019
-
-#define G_red1          #9d0006
-#define G_green1        #79740e
-#define G_yellow1       #b57614
-#define G_blue1         #076678
-#define G_purple1       #8f3f71
-#define G_aqua1         #427b58
-#define G_orange1       #af3a03
-
-*.background: G_dark0
-*.foreground: G_light1
-*.cursorColor: G_light1
-*.fading: 40
-*.fadeColor: G_dark0
-
-! Black
-*.color0: G_dark0
-*.color8: G_dark1
-
-! Red
-*.color1: G_red0
-*.color9: G_red1
-
-! Green
-*.color2: G_green0
-*.color10: G_green1
-
-! Yellow
-*.color3: G_yellow0
-*.color11: G_yellow1
-
-! Blue
-*.color4: G_blue0
-*.color12: G_blue1
-
-! Magenta
-*.color5: G_purple0
-*.color13: G_purple1
-
-! Cyan
-*.color6: G_aqua0
-*.color14: G_aqua1
-
-! White
-*.color7: G_light0
-*.color15: G_light1
+!* Everforest
+*.color0: #2f383e
+*.color8: #868d80
+*.color1: #e68183
+*.color9: #e68183
+*.color2: #a7c080
+*.color10: #a7c080
+*.color3: #dbbc7f
+*.color11: #dbbc7f
+*.color4: #7fbbb3
+*.color12: #7fbbb3
+*.color5: #d699b6
+*.color13: #d699b6
+*.color6: #83c092
+*.color14: #83c092
+*.color7: #d3c6aa
+*.color15: #d3c6aa
+*.foreground: #d3c6aa
+*.background: #2f383e
+*.cursorColor: #d3c6aa
 

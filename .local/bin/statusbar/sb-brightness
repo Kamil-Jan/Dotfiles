@@ -6,5 +6,5 @@ case $BUTTON in
     6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-printf "🔆 %.*f%%" 0 $(light -G)
+printf " 🔆 %.*f%%" 0 $(light -G)
 

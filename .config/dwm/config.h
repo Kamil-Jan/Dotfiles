@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#define TERMINAL "alacritty"
+#define TERMINAL "st"
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -13,16 +13,26 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
-    "BlexMono Nerd Font:size=11",
+    "Caskaydia Cove Nerd Font:size=12:antialias=true:autohint=true",
     "JoyPixels:pixelsize=12:antialias=true:autohint=true"
-    //"FontAwesome5Free:style=Solid:pixelsize=12:antialias=true;1"
+    "FontAwesome5Free:style=Solid:pixelsize=12:antialias=true;1"
 };
-static const char normbgcolor[]     = "#282828";
-static const char normbordercolor[] = "#3c3836";
-static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#282828";
-static const char selbgcolor[]      = "#fe8019";
-static const char selbordercolor[]  = "#fe8019";
+
+// Everforest
+static const char normbgcolor[]     = "#2f383e";
+static const char normbordercolor[] = "#868d80";
+static const char normfgcolor[]     = "#d8caac";
+static const char selfgcolor[]      = "#2f383e";
+static const char selbgcolor[]      = "#a7c080";
+static const char selbordercolor[]  = "#a7c080";
+
+// Gruvbox
+//static const char normbgcolor[]     = "#282828";
+//static const char normbordercolor[] = "#3c3836";
+//static const char normfgcolor[]     = "#ebdbb2";
+//static const char selfgcolor[]      = "#282828";
+//static const char selbgcolor[]      = "#fe8019";
+//static const char selbordercolor[]  = "#fe8019";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -98,8 +108,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		        XK_u,	   setlayout,	   {.v = &layouts[5]} }, /* deck */
 	{ MODKEY,			            XK_i,	   setlayout,	   {.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,		        XK_i,	   setlayout,	   {.v = &layouts[7]} }, /* centeredfloatingmaster */
-	{ MODKEY,                       XK_o,      incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY,                       XK_f,      togglefullscr,  {0} },
@@ -108,7 +116,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_c,      spawn,          {0} },
+	{ MODKEY,                       XK_c,      spawn,          SHCMD("edit-configs") },
 	{ MODKEY,                       XK_v,      focusmaster,    {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("firefox") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
@@ -130,6 +138,7 @@ static Key keys[] = {
 	{ 0, XF86XK_MonBrightnessDown,	spawn,	   SHCMD("light -U 5; kill -46 $(pidof dwmblocks)") },
 	{ 0, XK_Print,	                spawn,	   SHCMD("scrot /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'") },
 	{ ShiftMask, XK_Print,	        spawn,	   SHCMD("scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'") },
+	{ ControlMask, XK_Print,	    spawn,	   SHCMD("scrot /tmp/screenshot-$(date +%F_%T).png -u -e 'xclip -selection c -t image/png < $f'") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
