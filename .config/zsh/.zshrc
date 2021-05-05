@@ -57,6 +57,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 bindkey -v
 
 # Alias section
+zathurad () {
+    zathura "$@" & disown
+}
+
 if [ -f $XDG_CONFIG_HOME/.aliases ]; then
     source $XDG_CONFIG_HOME/.aliases
 fi
