@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Caskaydia Cove Nerd Font:size=17:antialias=true:autohint=true";
-static char *font2[] = { "JoyPixels:size=12:antialias=true:autohint=true" };
+static char *font = "Caskaydia Cove Nerd Font:size=10:antialias=true:autohint=true";
+static char *font2[] = { "JoyPixels:size=10:antialias=true:autohint=true" };
 
 static int borderpx = 2;
 
@@ -257,6 +257,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ ControlMask,          XK_0,           zoomreset,      {.f =  0} },
 	{ ControlMask,          XK_equal,       zoom,           {.f = +1} },
 	{ ControlMask,          XK_minus,       zoom,           {.f = -1} },
 	{ MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd} },

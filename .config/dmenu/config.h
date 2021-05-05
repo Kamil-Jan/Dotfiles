@@ -12,9 +12,15 @@ static const char *fonts[] = {
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#ebdbb2", "#282828" },
-	[SchemeSel] = { "#282828", "#fe8019" },
-	[SchemeOut] = { "#000000", "#00ffff" },
+    //
+    // Gruvbox
+	//[SchemeNorm] = { "#ebdbb2", "#282828" },
+	//[SchemeSel] = { "#282828", "#fe8019" },
+    //
+    // Everforest
+	[SchemeNorm] = { "#d3c6aa", "#2f383e" },
+	[SchemeSel] = { "#2f383e", "#a7c080" },
+    [SchemeOut] = { "#000000", "#00ffff" },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 0;
