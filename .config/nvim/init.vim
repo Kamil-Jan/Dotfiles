@@ -23,6 +23,9 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'sainnhe/everforest'
     Plug 'sainnhe/sonokai'
     Plug 'dracula/vim'
+" C++
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'rhysd/vim-clang-format'
 " Mark Down
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
@@ -41,7 +44,6 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'easymotion/vim-easymotion'                 " navigation within a file
     Plug 'lilydjwg/colorizer'
     Plug 'ryanoasis/vim-devicons'
-    "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call plug#end()            " required
 filetype plugin indent on  " required
@@ -130,7 +132,13 @@ syntax on
 
 " C++ settings
 autocmd FileType cpp set foldmethod=indent
-set makeprg=g++\ -std=c++17\ -Wall\ -o\ %:r.out\ %
+autocmd FileType cpp nmap <silent> <leader>h :CocCommand clangd.switchSourceHeader<CR>
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11",
+            \ "BreakBeforeBraces" : "Allman"}
 
 " Bash settings
 autocmd FileType sh set foldmethod=indent
@@ -151,10 +159,10 @@ nmap Nop <Plug>IMAP_JumpForward
 vmap Nop <Plug>IMAP_JumpForward
 
 " split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+nnoremap <C-h> <C-W><C-H>
 
 " resize windows
 nnoremap <silent> <C-M-j> :resize -2<CR>
@@ -164,8 +172,8 @@ nnoremap <silent> <C-M-h> :vertical resize +2<CR>
 
 " tab navigations
 nnoremap <silent> <C-t> :tabnew<CR>
-nnoremap <silent> <M-Tab> :tabnext<CR>
-nnoremap <silent> <C-Tab> :tabprev<CR>
+nnoremap <silent> <S-Tab> :tabnext<CR>
+nnoremap <silent> <M-Tab> :tabprev<CR>
 
 " moving lines
 xnoremap <silent> K :move '<-2<CR>gv-gv
@@ -174,7 +182,6 @@ xnoremap <silent> J :move '<+1<CR>gv-gv
 " copy and paste to/from clipboard
 noremap <leader>y "+y
 noremap <leader>p "+p
-inoremap <leader>p <esc>"+pa
 noremap <leader>ay :%y+<CR>
 
 " auto correcting in a line
@@ -215,9 +222,9 @@ autocmd FileType matlab map <buffer> <F9> :w<CR>:sp<CR>:exec 'term octave' shell
 
 " compile and open LaTex document
 autocmd FileType plaintex map <buffer> <F9> :w<CR>:sp<CR>:exec 'term pdflatex' shellescape(@%, 1)<CR>
-autocmd FileType plaintex map <buffer> <F10> :sp<CR>:terminal mupdf %:r.pdf<CR>:q<CR>
+autocmd FileType plaintex map <buffer> <F10> :sp<CR>:terminal zathura %:r.pdf<CR>:q<CR>
 autocmd FileType tex map <buffer> <F9> :w<CR>:sp<CR>:exec 'term pdflatex' shellescape(@%, 1)<CR>
-autocmd FileType tex map <buffer> <F10> :sp<CR>:terminal mupdf %:r.pdf<CR>:q<CR>
+autocmd FileType tex map <buffer> <F10> :sp<CR>:terminal zathura %:r.pdf<CR>:q<CR>
 
 " run bash script
 autocmd FileType sh map <buffer> <F9> :sp<CR>:term ./%<CR>
@@ -228,15 +235,32 @@ map <silent> <F6> :NERDTreeToggle<CR>
 map :W <Nop>
 
 " Statusline settings.
+hi NormalColor guibg=#a7c080 guifg=#2b3339
+hi InsertColor guibg=#7fbbb3 guifg=#2b3339
+hi ReplaceColor guibg=#e68183 guifg=#2b3339
+hi VisualColor guibg=#d699b6 guifg=#2b3339
+
 set laststatus=2
-set statusline =
-set statusline +=%<%f\ \|
-set statusline +=%{strlen(&filetype)?'\ '.WebDevIconsGetFileTypeSymbol().'\ '.&filetype.'\ \|':''}
-set statusline +=\ %{strlen(FugitiveHead())?'\ '.FugitiveHead().'\ \|\ ':''}
-set statusline +=%=
-set statusline +=%-8.(%l,%c%V%)
-set statusline +=\ %-4L
-set statusline +=\ %-4P
+
+set statusline=
+set statusline+=%#NormalColor#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#InsertColor#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#ReplaceColor#%{(mode()=='R')?'\ \ REPLACE\ ':''}
+set statusline+=%#ReplaceColor#%{(mode()=='Rv')?'\ \ V-REPLACE\ ':''}
+set statusline+=%#VisualColor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=%#VisualColor#%{(mode()=='V')?'\ \ V-LINE\ ':''}
+let &statusline.='%#VisualColor#%{(mode()=="\<C-V>")?"\ \ V-BLOCK\ ":""}'
+set statusline+=%#InsertColor#%{(mode()=='c')?'\ \ COMMAND\ ':''}
+set statusline+=%#InsertColor#%{(mode()=='t')?'\ \ TERMINAL\ ':''}
+set statusline+=%#Normal#%{''}
+
+set statusline+=\ %<%f\ \|
+set statusline+=%{strlen(&filetype)?'\ '.WebDevIconsGetFileTypeSymbol().'\ '.&filetype.'\ \|':''}
+set statusline+=\ %{strlen(FugitiveHead())?'\ '.FugitiveHead().'\ \|\ ':''}
+set statusline+=%=
+set statusline+=%-8.(%l,%c%V%)
+set statusline+=\ %-4L
+set statusline+=\ %-4P
 
 " Git settings.
 let g:signify_sign_add               = '+'
@@ -271,7 +295,8 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-nmap <silent> <C-f> :GFiles<CR>
+nmap <silent> <C-g>f :GFiles<CR>
+nmap <silent> <C-f> :Files<CR>
 nmap <silent> <C-s> :Lines<CR>
 
 " Border color
@@ -381,9 +406,11 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" Format file
+nmap <leader>f <Plug>(coc-format)
+vmap <leader>f <Plug>(coc-format)
+autocmd FileType c,cpp,objc nnoremap <leader>f :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <leader>f :ClangFormat<CR>
 
 augroup mygroup
   autocmd!
@@ -413,8 +440,8 @@ omap af <Plug>(coc-funcobj-a)
 " Use <TAB> for selections ranges.
 " NOTE: Requires 'textDocument/selectionRange' support from the language server.
 " coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
+"nmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
