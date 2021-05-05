@@ -4,8 +4,8 @@ export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
 export EDITOR="nvim"
 export VIEWER="nvim"
 export VISUAL="nvim"
-export TERMINAL="alacritty"
-export READER="mupdf"
+export TERMINAL="st"
+export READER="zathura"
 
 # Config files
 export XDG_CONFIG_HOME="$HOME/.config"

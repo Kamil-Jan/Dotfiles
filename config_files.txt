@@ -16,6 +16,7 @@
 /home/kamil/.config/rofi
 /home/kamil/.config/betterlockscreenrc
 /home/kamil/.config/picom
+/home/kamil/.config/zathura
 /home/kamil/.local/bin/statusbar
 /home/kamil/.local/bin/scripts
 /home/kamil/.local/bin/dmenuunicode
