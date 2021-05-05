@@ -4,6 +4,13 @@
 !! Set a default font and font size as below:
 *.font: Caskaydia Cove Nerd Font:size=17:antialias=true:autohint=true
 
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.autohint: 0
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
 !* Gruvbox dark
 !*.color0: #282828
 !*.color1: #cc241d

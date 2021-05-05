@@ -6,9 +6,7 @@ alias rg="ranger"
 
 alias pac="sudo pacman"
 
-alias ls="ls --color=auto"
-alias ll="ls -lah"
-alias la="ls -a"
+alias ls="ls -lah --group-directories-first --color=auto"
 
 alias gs="git status"
 
