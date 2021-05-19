@@ -26,6 +26,7 @@ call plug#begin('~/.config/.vim/plugged')
 " C++
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'rhysd/vim-clang-format'
+    Plug 'derekwyatt/vim-fswitch'
 " Mark Down
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
@@ -73,6 +74,7 @@ set nohls
 " spelling settings
 set spelllang=en_us,ru
 set spell
+autocmd TermOpen * setlocal nospell
 
 " russian keymap
 set keymap=russian-jcukenwin
@@ -92,7 +94,6 @@ au VimEnter * :hi SignifySignDelete guibg=237 guifg=#fb4934
 au VimEnter * :hi SignifySignDeleteFirstLine guibg=237 guifg=#cc241d
 au VimEnter * :hi SignifySignChange guibg=237 guifg=#fe8019
 au VimEnter * :hi SignifySignAdd guibg=237 guifg=#b8bb26
-au VimEnter * :hi Normal ctermbg=none
 
 " left column settings
 set nu
@@ -105,7 +106,7 @@ set cursorline
 "au VimEnter * GuiTabline 0
 
 " cwd the same as current file directory
-set autochdir
+"set autochdir
 
 " vim-run settings
 let g:run_cmd_python = ['python']
@@ -132,7 +133,13 @@ syntax on
 
 " C++ settings
 autocmd FileType cpp set foldmethod=indent
-autocmd FileType cpp nmap <silent> <leader>h :CocCommand clangd.switchSourceHeader<CR>
+autocmd FileType cpp nmap <silent> <leader>h :FSHere<CR>
+autocmd FileType cpp nmap <silent> <leader>sht :FSTab<CR>
+autocmd FileType cpp nmap <silent> <leader>shl :FSSplitRight<CR>
+autocmd FileType cpp nmap <silent> <leader>shh :FSSplitLeft<CR>
+autocmd FileType cpp nmap <silent> <leader>shk :FSSplitAbove<CR>
+autocmd FileType cpp nmap <silent> <leader>shj :FSSplitBelow<CR>
+
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "true",
@@ -164,6 +171,9 @@ nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
 
+" exit terminal mode using <ESC>
+tnoremap <C-d> <C-\><C-n>
+
 " resize windows
 nnoremap <silent> <C-M-j> :resize -2<CR>
 nnoremap <silent> <C-M-k> :resize +2<CR>
@@ -172,8 +182,19 @@ nnoremap <silent> <C-M-h> :vertical resize +2<CR>
 
 " tab navigations
 nnoremap <silent> <C-t> :tabnew<CR>
-nnoremap <silent> <S-Tab> :tabnext<CR>
-nnoremap <silent> <M-Tab> :tabprev<CR>
+nnoremap <silent> <M-l> :tabnext<CR>
+nnoremap <silent> <M-h> :tabprev<CR>
+nnoremap <silent> <M-L> :tabm +1<CR>
+nnoremap <silent> <M-H> :tabm -1<CR>
+nnoremap <silent> <M-1> 1gt
+nnoremap <silent> <M-2> 2gt
+nnoremap <silent> <M-3> 3gt
+nnoremap <silent> <M-4> 4gt
+nnoremap <silent> <M-5> 5gt
+nnoremap <silent> <M-6> 6gt
+nnoremap <silent> <M-7> 7gt
+nnoremap <silent> <M-8> 8gt
+nnoremap <silent> <M-9> 9gt
 
 " moving lines
 xnoremap <silent> K :move '<-2<CR>gv-gv
@@ -190,6 +211,9 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 " fast replacements
 nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> s* "sy:let @/=@s<CR>cgn
+
+" remove characters after '[n].'
+nnoremap <silent> <leader>di :%s/\(\d\+\.\).*/\1/<CR>
 
 " auto commenting setting
 nnoremap <silent> <M-/> :call NERDComment(0,"toggle")<CR>
@@ -239,6 +263,7 @@ hi NormalColor guibg=#a7c080 guifg=#2b3339
 hi InsertColor guibg=#7fbbb3 guifg=#2b3339
 hi ReplaceColor guibg=#e68183 guifg=#2b3339
 hi VisualColor guibg=#d699b6 guifg=#2b3339
+hi BgColor guibg=#404c51
 
 set laststatus=2
 
@@ -252,7 +277,7 @@ set statusline+=%#VisualColor#%{(mode()=='V')?'\ \ V-LINE\ ':''}
 let &statusline.='%#VisualColor#%{(mode()=="\<C-V>")?"\ \ V-BLOCK\ ":""}'
 set statusline+=%#InsertColor#%{(mode()=='c')?'\ \ COMMAND\ ':''}
 set statusline+=%#InsertColor#%{(mode()=='t')?'\ \ TERMINAL\ ':''}
-set statusline+=%#Normal#%{''}
+set statusline+=%#BgColor#%{''}
 
 set statusline+=\ %<%f\ \|
 set statusline+=%{strlen(&filetype)?'\ '.WebDevIconsGetFileTypeSymbol().'\ '.&filetype.'\ \|':''}
@@ -261,6 +286,47 @@ set statusline+=%=
 set statusline+=%-8.(%l,%c%V%)
 set statusline+=\ %-4L
 set statusline+=\ %-4P
+
+" Tabline settings
+function MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let fname = fnamemodify(bufname(buflist[winnr - 1]), ":p:.")
+  if len(fname) != 0
+      return fname
+  endif
+  return "[Нет имени]"
+endfunction
+
+function MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " select the highlighting
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+
+    " set the tab page number (for mouse clicks)
+    let s .= '%' . (i + 1) . 'T'
+
+    " the label is made by MyTabLabel()
+    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+  endfor
+
+  " after the last tab fill with TabLineFill and reset tab page nr
+  let s .= '%#TabLineFill#%T'
+
+  " right-align the label to close the current tab page
+  if tabpagenr('$') > 1
+    let s .= '%=%#TabLine#%999X'
+  endif
+
+  return s
+endfunction
+
+set tabline=%!MyTabLine()
 
 " Git settings.
 let g:signify_sign_add               = '+'
