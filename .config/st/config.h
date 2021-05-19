@@ -260,9 +260,9 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_0,           zoomreset,      {.f =  0} },
 	{ ControlMask,          XK_equal,       zoom,           {.f = +1} },
 	{ ControlMask,          XK_minus,       zoom,           {.f = -1} },
-	{ MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd} },
-	{ MODKEY,               XK_y,           externalpipe,   {.v = copyurlcmd} },
-	{ MODKEY,               XK_o,           externalpipe,   {.v = copyoutput} },
+	{ ControlMask|MODKEY,   XK_l,           externalpipe,   {.v = openurlcmd} },
+	{ ControlMask|MODKEY,   XK_y,           externalpipe,   {.v = copyurlcmd} },
+	{ ControlMask|MODKEY,   XK_o,           externalpipe,   {.v = copyoutput} },
 };
 
 /*

@@ -49,7 +49,8 @@ static const Rule rules[] = {
 	 */
 	/* class                   instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",                  NULL,       NULL,       0,            1,           -1 },
-	{ "SimpleScreenRecorder",  NULL,       NULL,       0,            1,           -1 }
+	{ "SimpleScreenRecorder",  NULL,       NULL,       0,            1,           -1 },
+    { NULL,                    NULL,       "Godot",    0,            1,           -1 }
 };
 
 /* layout(s) */
