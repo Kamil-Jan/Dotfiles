@@ -21,6 +21,7 @@
 /home/kamil/.local/bin/scripts
 /home/kamil/.local/bin/dmenuunicode
 /home/kamil/.local/share/emoji
+/home/kamil/.mozilla/firefox/*.default-release/chrome
 /home/kamil/.Xresources
 /home/kamil/.xinitrc
 /home/kamil/.xprofile

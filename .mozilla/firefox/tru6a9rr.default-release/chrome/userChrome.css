@@ -1,31 +1,53 @@
  :root {
+  /* Minimal Functional Fox variables*/
 
-   /* Minimal Functional Fox variables*/
-  --mff-bg: #282828;
-  --mff-urlbar-bg: #303030;
-  --mff-icon-color: #ebdbb2;
+  /* Gruvbox */
+  /*--mff-bg: #282828;*/
+  /*--mff-urlbar-bg: #303030;*/
+  /*--mff-icon-color: #ebdbb2;*/
+  /*--mff-sidebar-color: #ebdbb2;*/
+  /*--mff-tab-color: #ebdbb2;*/
+  /*--mff-tab-pinned-bg: #282828;*/
+  /*--mff-tab-selected-bg: #3c3836;*/
+  /*--mff-tab-selected-fg: #ebdbb2;*/
+  /*--mff-tab-soundplaying-bg: #9d0006;*/
+  /*--mff-urlbar-color: #fbf1c7;*/
+  /*--mff-urlbar-focused-color: #ebdbb2;*/
+  /*--mff-urlbar-results-color: #ebdbb2;*/
+  /*--mff-urlbar-results-url-color: #928374;*/
+  /*--mff-urlbar-selected-bg: #404040;*/
+  /*--mff-urlbar-selected-fg: #ebdbb2;*/
+
+  /* Everforest */
+  --mff-bg: #2b3339;
+  --mff-urlbar-bg: #3a454a;
+  --mff-icon-color: #d3c6aa;
+  --mff-sidebar-color: #d3c6aa;
+  --mff-tab-color: #d3c6aa;
+  --mff-tab-pinned-bg: #2f383e;
+  --mff-tab-selected-bg: #a7c080;
+  --mff-tab-selected-fg: #2f383e;
+  --mff-tab-soundplaying-bg: #7fbbb3;
+  --mff-urlbar-color: #fbf1c7;
+  --mff-urlbar-focused-color: #d3c6aa;
+  --mff-urlbar-results-color: #d3c6aa;
+  --mff-urlbar-results-url-color: #fbf1c7;
+  --mff-urlbar-selected-bg: #7fbbb3;
+  --mff-urlbar-selected-fg: #2f383e;
+
   --mff-nav-toolbar-padding: 8px;
   --mff-sidebar-bg: var(--mff-bg);
-  --mff-sidebar-color: #ebdbb2;
   --mff-tab-border-radius: 6px;
-  --mff-tab-color: #ebdbb2;
   --mff-tab-font-family: "Cantarell", serif;
   --mff-tab-font-size: 11pt;
   --mff-tab-font-weight: 600;
   --mff-tab-height: 32px;
-  --mff-tab-pinned-bg: #282828;
-  --mff-tab-selected-bg: #3c3836;
-  --mff-tab-soundplaying-bg: #9d0006;
-  --mff-urlbar-color: #fbf1c7;
-  --mff-urlbar-focused-color: #ebdbb2;
   --mff-urlbar-font-family: "Cantarell", serif;
   --mff-urlbar-font-size: 12pt;
   --mff-urlbar-font-weight: 700;
-  --mff-urlbar-results-color: #ebdbb2;
   --mff-urlbar-results-font-family: "Cantarell", serif;
   --mff-urlbar-results-font-size: 12pt;
   --mff-urlbar-results-font-weight: 600;
-  --mff-urlbar-results-url-color: #928374;
   /*   --mff-tab-selected-bg: linear-gradient(90deg, rgba(232,74,95,1) 0%, rgba(255,132,124,1) 50%, rgba(254,206,168,1) 100%); */
   /*   --mff-urlbar-font-weight: 600; */
 
@@ -51,6 +73,10 @@
   background: var(--mff-tab-selected-bg) !important;
 }
 
+.tab-label[selected="true"] {
+  color: var(--mff-tab-selected-fg) !important;
+}
+
 .tab-background:not[visuallyselected] {
   background: var(--mff-tab-selected-bg) !important;
   opacity: 0.5 !important;
@@ -59,6 +85,14 @@
 /* This positions the tabs under the navaigator container */
 #titlebar {
   -moz-box-ordinal-group: 3 !important;
+}
+
+#titlebar-button {
+  display: none !important;
+}
+
+#window-controls {
+  display: none !important;
 }
 
 .tabbrowser-tab::after,
@@ -84,6 +118,10 @@
   font-weight: var(--mff-tab-font-weight);
   font-size: var(--mff-tab-font-size) !important;
   color: var(--mff-tab-color);
+}
+
+.tab-content {
+  padding-bottom: 4px !important;
 }
 
 /* Hide the favicon for tabs */
@@ -162,13 +200,13 @@ width: 50% !important;
 .toolbarbutton-text {
   color: var(--mff-icon-color)  !important;
 }
+
 .urlbar-icon {
   color: var(--mff-icon-color)  !important;
-
 }
 
 .toolbarbutton-icon {
-/* filter: drop-shadow(0 0 0.75rem crimson); */
+ /*filter: drop-shadow(0 0 0.75rem crimson); */
 }
 
 #urlbar-results {
@@ -179,11 +217,16 @@ width: 50% !important;
 }
 
 .urlbarView-row[type="bookmark"] > span{
-  color: green !important;
+  color: orange !important;
+}
+
+.urlbarView-row[aria-selected="true"] > span{
+  color: var(--mff-urlbar-selected-fg) !important;
+  background: var(--mff-urlbar-selected-bg) !important;
 }
 
 .urlbarView-row[type="switchtab"] > span{
-  color: orange !important;
+  color: blue !important;
 }
 
 .urlbarView-url, .search-panel-one-offs-container {
@@ -243,7 +286,7 @@ toolbar {
   background-color: var(--mff-bg) !important;
 }
 
-#sidebar-search-container {
+#urlbar-search-container {
   background-color: var(--mff-sidebar-bg) !important;
 }
 
@@ -286,6 +329,9 @@ toolbar#nav-bar {
   color: var(--mff-urlbar-focused-color) !important;
 }
 
+#urlbar-input:selected {
+  color: var(--mff-urlbar-focused-color) !important;
+}
 
 .megabar[breakout-extend="true"]:not([open="true"]) > #urlbar-background {
   box-shadow: none !important;
@@ -349,3 +395,4 @@ image#sidebar-icon {
 toolbarseparator {
   display: none;
 }
+
