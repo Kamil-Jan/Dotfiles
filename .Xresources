@@ -12,7 +12,7 @@ Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
 !* Gruvbox dark
-!*.color0: #282828
+*.color0: #282828
 !*.color1: #cc241d
 !*.color2: #98971a
 !*.color3: #d79921
@@ -28,9 +28,26 @@ Xft.lcdfilter: lcddefault
 !*.color13: #d3869b
 !*.color14: #8ec07c
 !*.color15: #ebdbb2
-!*.background: #282828
-!*.foreground: #ebdbb2
-!*.cursorColor: white
+
+*.color1: #fb4934
+*.color2: #b8bb26
+*.color3: #fabd2f
+*.color4: #83a598
+*.color5: #d3869b
+*.color6: #8ec07c
+*.color7: #ebdbb2
+*.color8: #a89984
+*.color9: #cc241d
+*.color10: #98971a
+*.color11: #d79921
+*.color12: #458588
+*.color13: #b16286
+*.color14: #689d6a
+*.color15: #928374
+
+*.background: #282828
+*.foreground: #ebdbb2
+*.cursorColor: white
 
 !* Gruvbox light
 !*.color0: #fbf1c7
@@ -75,23 +92,23 @@ Xft.lcdfilter: lcddefault
 !*.cursorColor: white
 
 !* Everforest
-*.color0: #2f383e
-*.color8: #868d80
-*.color1: #e68183
-*.color9: #e68183
-*.color2: #a7c080
-*.color10: #a7c080
-*.color3: #dbbc7f
-*.color11: #dbbc7f
-*.color4: #7fbbb3
-*.color12: #7fbbb3
-*.color5: #d699b6
-*.color13: #d699b6
-*.color6: #83c092
-*.color14: #83c092
-*.color7: #d3c6aa
-*.color15: #d3c6aa
-*.foreground: #d3c6aa
-*.background: #2f383e
-*.cursorColor: #d3c6aa
+!*.color0: #2f383e
+!*.color8: #868d80
+!*.color1: #e68183
+!*.color9: #e68183
+!*.color2: #a7c080
+!*.color10: #a7c080
+!*.color3: #dbbc7f
+!*.color11: #dbbc7f
+!*.color4: #7fbbb3
+!*.color12: #7fbbb3
+!*.color5: #d699b6
+!*.color13: #d699b6
+!*.color6: #83c092
+!*.color14: #83c092
+!*.color7: #d3c6aa
+!*.color15: #d3c6aa
+!*.foreground: #d3c6aa
+!*.background: #2f383e
+!*.cursorColor: #d3c6aa
 

@@ -1,0 +1,179 @@
+/* =============================================================
+   Rofi color theme
+
+   Based on the Gruvbox color scheme for rofi by bardisty
+   https://github.com/bardisty/gruvbox-rofi
+   ============================================================= */
+
+* {
+    /* Theme settings */
+    highlight: bold;
+    scrollbar: true;
+
+    /* Everforest dark colors */
+    everforest-dark-bg0:          #2f383e;
+    everforest-dark-bg0-soft:     #404c51;
+    everforest-dark-bg3:          #868d80;
+    everforest-dark-fg0:          #d3c6aa;
+    everforest-dark-fg1:          #d3c6aa;
+    everforest-dark-red-dark:     #e68183;
+    everforest-dark-red-light:    #e68183;
+    everforest-dark-yellow-dark:  #dbbc7f;
+    everforest-dark-yellow-light: #dbbc7f;
+    everforest-dark-gray:         #a7c080;
+
+    /* Theme colors */
+    background:                  @everforest-dark-bg0;
+    background-color:            @background;
+    foreground:                  @everforest-dark-fg1;
+    border-color:                @everforest-dark-gray;
+    separatorcolor:              @border-color;
+    scrollbar-handle:            @border-color;
+
+    normal-background:           @background;
+    normal-foreground:           @foreground;
+    alternate-normal-background: @backround;
+    alternate-normal-foreground: @foreground;
+    selected-normal-background:  @everforest-dark-bg0-soft;
+    selected-normal-foreground:  @everforest-dark-fg0;
+
+    active-background:           @everforest-dark-yellow-dark;
+    active-foreground:           @background;
+    alternate-active-background: @active-background;
+    alternate-active-foreground: @active-foreground;
+    selected-active-background:  @everforest-dark-yellow-light;
+    selected-active-foreground:  @active-foreground;
+
+    urgent-background:           @everforest-dark-red-dark;
+    urgent-foreground:           @background;
+    alternate-urgent-background: @urgent-background;
+    alternate-urgent-foreground: @urgent-foreground;
+    selected-urgent-background:  @everforest-dark-red-light;
+    selected-urgent-foreground:  @urgent-foreground;
+}
+
+window {
+    background-color: @background;
+    border:           3;
+    padding:          8;
+}
+
+mainbox {
+    border:  0;
+    padding: 0;
+}
+
+message {
+    border:       2px 0 0;
+    border-color: @separatorcolor;
+    padding:      1px;
+}
+
+textbox {
+    highlight:  @highlight;
+    text-color: @foreground;
+}
+
+listview {
+    border:       2px solid 0 0;
+    padding:      5px 0 0;
+    border-color: @separatorcolor;
+    spacing:      2px;
+    scrollbar:    @scrollbar;
+}
+
+element {
+    border:  1;
+    padding: 8px;
+    spacing: 10px;
+    margin: 2px;
+}
+
+element-icon {
+    size: 23;
+}
+
+element.normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+
+element.normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
+}
+
+element.normal.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
+}
+
+element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
+}
+
+element.selected.active {
+    background-color: @selected-active-background;
+    text-color:       @selected-active-foreground;
+}
+
+element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+
+element.alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color:       @alternate-urgent-foreground;
+}
+
+element.alternate.active {
+    background-color: @alternate-active-background;
+    text-color:       @alternate-active-foreground;
+}
+
+scrollbar {
+    width:        0;
+    border:       0;
+    handle-color: @scrollbar-handle;
+    handle-width: 0;
+    padding:      0;
+}
+
+sidebar {
+    border:       2px 0 0;
+    border-color: @separatorcolor;
+}
+
+inputbar {
+    spacing:    0;
+    text-color: @normal-foreground;
+    padding:    5px;
+    children:   [ prompt, textbox-prompt-sep, entry, case-indicator ];
+}
+
+case-indicator,
+entry,
+prompt,
+button {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+
+button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+textbox-prompt-sep {
+    expand:     false;
+    str:        ":";
+    text-color: @normal-foreground;
+    margin:     0 0.3em 0 0;
+}

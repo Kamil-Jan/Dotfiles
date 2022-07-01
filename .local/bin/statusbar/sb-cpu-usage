@@ -8,6 +8,6 @@ case $BUTTON in
     6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-top -bn 1 | awk '/^%Cpu/ {printf "💽 %.f%%", $2 + $4 + $6}'
+top -bn 1 | awk '/^%Cpu/ {printf " %.f%%", $2 + $4 + $6}'
 #cat <(sleep 1 && grep 'cpu ' /proc/stat) | awk -v rs="" '{printf "💽 %.2f%%", ($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5)}'
 

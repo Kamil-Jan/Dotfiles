@@ -3,8 +3,8 @@
 case $BUTTON in
   	1) "$TERMINAL" -e nmtui; pkill -RTMIN+4 dwmblocks ;;
 	3) notify-send "🌐 Internet module" "\- Left click to connect
-❎: no wifi connection
-📶: wifi connection with quality
+睊 : no wifi connection
+直 : wifi connection with quality
 " ;;
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
@@ -22,8 +22,8 @@ update() {
 }
 
 case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
-    down) wifiicon="❎ no wifi" ;;
-    up) wifiicon="📶 $(iwgetid -r) $(numfmt --to=iec $(update /sys/class/net/[ew]*/statistics/rx_bytes) | sed 's/\(^[0-9,]\+\)/\1 /')B/s" ;;
+    down) wifiicon="睊 no wifi" ;;
+    up) wifiicon="直 $(iwgetid -r) $(numfmt --to=iec $(update /sys/class/net/[ew]*/statistics/rx_bytes) | sed 's/\(^[0-9,]\+\)/\1 /')B/s" ;;
 esac
 
 printf "%s" "$wifiicon"

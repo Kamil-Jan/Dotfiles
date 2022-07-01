@@ -7,6 +7,6 @@
 . "$HOME/.xprofile"
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
-~/.config/dwm/startdwm.sh
-#exec bspwm
+#~/.config/dwm/startdwm.sh
+exec bspwm
 

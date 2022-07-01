@@ -29,6 +29,7 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 
 # Environment variables
+HISTTIMEFORMAT="%d.%m.%y %T "
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=1000
 SAVEHIST=500

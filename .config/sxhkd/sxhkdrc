@@ -4,15 +4,16 @@
 
 # terminal
 super + Return
-    alacritty
+    st
 
 # program launcher
 super + d
-    rofi -show-icons true -show drun
+    dmenu_run
+    #rofi -show-icons true -show drun
 
 # browser
 super + b
-    firefox
+    brave
 
 # messenger
 super + t
@@ -23,18 +24,6 @@ super + t
 #######################
 super + F1
     betterlockscreen -l dim
-
-super + e
-    ~/.config/scripts/edit-configs.sh
-
-super + c
-    ~/.config/scripts/copy_output.sh
-
-super + shift + e
-    rofi -width 15pt -lines 3 -show power-menu -modi "power-menu:rofi-power-menu --choices=shutdown/reboot/logout"
-
-
-
 
 #######################
 # Special keys
@@ -63,6 +52,9 @@ Print
 alt + Print
     scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'
 
+ctrl + Print
+    scrot /tmp/screenshot-$(date +%F_%T).png -u -e 'xclip -selection c -t image/png < $f'
+
 #######################
 # Bspwm keybindigs
 #######################
@@ -72,11 +64,11 @@ super + r
     pkill -USR1 -x sxhkd
 
 # quit/restart bspwm
-super + alt + {q, r}
+super + shift + {q, r}
     bspc {quit,wm -r}
 
 # close/kill
-super + {_,shift + }q
+super + {_,ctrl + }q
     bspc node -{c,k}
 
 #######################

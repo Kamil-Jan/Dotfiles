@@ -9,15 +9,8 @@
 " Plugins
 call plug#begin('~/.config/.vim/plugged')
 
-" File navigation
-    Plug 'preservim/nerdtree'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
 " Git integration
     Plug 'mhinz/vim-signify'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-rhubarb'
-    Plug 'junegunn/gv.vim'
 " Themes
     Plug 'morhetz/gruvbox'
     Plug 'sainnhe/everforest'
@@ -27,16 +20,13 @@ call plug#begin('~/.config/.vim/plugged')
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'rhysd/vim-clang-format'
     Plug 'derekwyatt/vim-fswitch'
-" Mark Down
-    Plug 'godlygeek/tabular'
-    Plug 'plasticboy/vim-markdown'
 " Latex
     Plug 'lervag/vimtex'
     Plug 'vim-latex/vim-latex'
 " Other
+    Plug 'SirVer/ultisnips'
     Plug 'preservim/nerdcommenter'                   " auto commenting
     Plug 'jiangmiao/auto-pairs'                      " auto pairs for '('
-    "Plug 'neoclide/coc.nvim', {'branch': 'release'}  " auto completing
     Plug 'tmhedberg/SimpylFold'                      " folding
     Plug 'unblevable/quick-scope'                    " fast navigation in a line
     Plug 'easymotion/vim-easymotion'                 " navigation within a file
@@ -60,7 +50,7 @@ set splitbelow
 
 " scheme and airline settings
 set termguicolors
-colorscheme everforest
+colorscheme gruvbox
 set bg=dark
 
 " encoding settings
@@ -101,17 +91,6 @@ set ruler
 set relativenumber
 set cursorline
 
-" change font of AutoComplete menu
-"au VimEnter * GuiPopupmenu 0
-"au VimEnter * GuiTabline 0
-
-" cwd the same as current file directory
-"set autochdir
-
-" vim-run settings
-let g:run_cmd_python = ['python']
-" close vim if only nerd tree is left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " delete all trailing whitespaces on save
 autocmd BufWritePre * %s/\s\+$//e
 
@@ -127,6 +106,7 @@ set expandtab
 set smartindent
 set autoindent
 let python_highlight_all=1
+let g:run_cmd_python = ['python']
 autocmd FileType python set foldmethod=expr
 syntax on
 
@@ -161,7 +141,6 @@ map k gk
 
 " map adding blank line.
 nnoremap <CR> m`o<Esc>``
-nnoremap <S-CR> m`O<Esc>``
 
 imap Nop <Plug>IMAP_JumpForward nmap Nop <Plug>IMAP_JumpForward
 nmap Nop <Plug>IMAP_JumpForward nmap Nop <Plug>IMAP_JumpForward
@@ -218,8 +197,8 @@ xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 nnoremap <silent> <leader>di :%s/\(\d\+\.\).*/\1/<CR>
 
 " auto commenting setting
-nnoremap <silent> <M-/> :call NERDComment(0,"toggle")<CR>
-vnoremap <silent> <M-/> :call NERDComment(0,"toggle")<CR>
+nnoremap <silent> <M-/> :call nerdcommenter#Comment(0,"toggle")<CR>
+vnoremap <silent> <M-/> :call nerdcommenter#Comment(0,"toggle")<CR>
 
 " change keymap to Russian
 nnoremap <silent> <M-r> :set iminsert=1<CR>
@@ -231,9 +210,14 @@ autocmd FileType python map <buffer> <F9> :w<CR>:sp<CR>:exec 'term python' shell
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:sp<CR>:exec 'term python' shellescape(@%, 1)<CR>
 
 " compile C++ file using <F9>. Run using <F10>
-autocmd FileType cpp map <buffer> <F9> :w<CR>:make<CR>
+autocmd FileType cpp map <buffer> <F8> :w<CR>:!g++ -std=c++17 -Wshadow -Wall -O2 -o %:r %<CR>
+autocmd FileType cpp map <buffer> <F9> :w<CR>:!g++ -std=c++17 -Wshadow -Wall -g -fsanitize=address -fsanitize=undefined -o %:r %<CR>
 autocmd FileType cpp map <buffer> <F10> :sp<CR>:term ./%:r<CR>
-autocmd FileType cpp map <buffer> <F11> :!g++ `pkg-config --cflags sdl2 SDL2_ttf` -MMD -MP -std=c++17 -Wall % -o %:r.out -lSDL2 -lSDL2_ttf<CR>
+
+" compile C file using <F9>. Run using <F10>
+autocmd FileType c map <buffer> <F8> :w<CR>:!g++ -Wshadow -Wall -O2 -o %:r %<CR>
+autocmd FileType c map <buffer> <F9> :w<CR>:!g++ -Wshadow -Wall -g -fsanitize=address -fsanitize=undefined -o %:r %<CR>
+autocmd FileType c map <buffer> <F10> :sp<CR>:term ./%:r<CR>
 
 " compile java file using <F9>. Run using <F10>
 autocmd FileType java map <buffer> <F9> :w<CR>:sp<CR>:exec 'term javac -Xlint' shellescape(@%, 1)<CR>
@@ -255,39 +239,44 @@ autocmd FileType tex map <buffer> <F10> :sp<CR>:terminal zathura %:r.pdf<CR>:q<C
 " run bash script
 autocmd FileType sh map <buffer> <F9> :sp<CR>:term ./%<CR>
 
-" open nerd tree using <F5>
-map <silent> <F6> :NERDTreeToggle<CR>
-
 map :W <Nop>
 
 " Statusline settings.
-hi NormalColor guibg=#a7c080 guifg=#2b3339
-hi InsertColor guibg=#7fbbb3 guifg=#2b3339
-hi ReplaceColor guibg=#e68183 guifg=#2b3339
-hi VisualColor guibg=#d699b6 guifg=#2b3339
-hi BgColor guibg=#404c51
+function MyStatusLine()
+    "hi NormalColor guibg=#a7c080 guifg=#2b3339
+    "hi InsertColor guibg=#7fbbb3 guifg=#2b3339
+    "hi ReplaceColor guibg=#e68183 guifg=#2b3339
+    "hi VisualColor guibg=#d699b6 guifg=#2b3339
+    "hi BgColor guibg=#404c51
+    hi NormalColor guibg=#fe8019 guifg=#282828
+    hi InsertColor guibg=#b8bb26 guifg=#282828
+    hi ReplaceColor guibg=#fb4934 guifg=#282828
+    hi VisualColor guibg=#d3869b guifg=#282828
+    hi BgColor guibg=#504945
+
+    set statusline=
+    set statusline+=%#NormalColor#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+    set statusline+=%#InsertColor#%{(mode()=='i')?'\ \ INSERT\ ':''}
+    set statusline+=%#ReplaceColor#%{(mode()=='R')?'\ \ REPLACE\ ':''}
+    set statusline+=%#ReplaceColor#%{(mode()=='Rv')?'\ \ V-REPLACE\ ':''}
+    set statusline+=%#VisualColor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+    set statusline+=%#VisualColor#%{(mode()=='V')?'\ \ V-LINE\ ':''}
+    let &statusline.='%#VisualColor#%{(mode()=="\<C-V>")?"\ \ V-BLOCK\ ":""}'
+    set statusline+=%#InsertColor#%{(mode()=='c')?'\ \ COMMAND\ ':''}
+    set statusline+=%#InsertColor#%{(mode()=='t')?'\ \ TERMINAL\ ':''}
+    set statusline+=%#BgColor#%{''}
+
+    set statusline+=\ %<%f\ \|
+    set statusline+=%{strlen(&filetype)?'\ '.WebDevIconsGetFileTypeSymbol().'\ '.&filetype.'\ \|':''}
+    "set statusline+=\ %{strlen(FugitiveHead())?'\ '.FugitiveHead().'\ \|\ ':''}
+    set statusline+=%=
+    set statusline+=%-8.(%l,%c%V%)
+    set statusline+=\ %-4L
+    set statusline+=\ %-4P
+endfunction
 
 set laststatus=2
-
-set statusline=
-set statusline+=%#NormalColor#%{(mode()=='n')?'\ \ NORMAL\ ':''}
-set statusline+=%#InsertColor#%{(mode()=='i')?'\ \ INSERT\ ':''}
-set statusline+=%#ReplaceColor#%{(mode()=='R')?'\ \ REPLACE\ ':''}
-set statusline+=%#ReplaceColor#%{(mode()=='Rv')?'\ \ V-REPLACE\ ':''}
-set statusline+=%#VisualColor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
-set statusline+=%#VisualColor#%{(mode()=='V')?'\ \ V-LINE\ ':''}
-let &statusline.='%#VisualColor#%{(mode()=="\<C-V>")?"\ \ V-BLOCK\ ":""}'
-set statusline+=%#InsertColor#%{(mode()=='c')?'\ \ COMMAND\ ':''}
-set statusline+=%#InsertColor#%{(mode()=='t')?'\ \ TERMINAL\ ':''}
-set statusline+=%#BgColor#%{''}
-
-set statusline+=\ %<%f\ \|
-set statusline+=%{strlen(&filetype)?'\ '.WebDevIconsGetFileTypeSymbol().'\ '.&filetype.'\ \|':''}
-set statusline+=\ %{strlen(FugitiveHead())?'\ '.FugitiveHead().'\ \|\ ':''}
-set statusline+=%=
-set statusline+=%-8.(%l,%c%V%)
-set statusline+=\ %-4L
-set statusline+=\ %-4P
+call MyStatusLine()
 
 " Tabline settings
 function MyTabLabel(n)
@@ -356,40 +345,16 @@ highlight QuickScopeSecondary guifg='#8ec07c' gui=underline ctermfg=81 cterm=und
 
 let g:qs_max_chars=150
 
-" Fzf settings.
-" This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-nmap <silent> <C-g>f :GFiles<CR>
-nmap <silent> <C-f> :Files<CR>
-nmap <silent> <C-s> :Lines<CR>
-
-" Border color
-" let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp', 'options': '--no-preview'} }
-let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp'} }
-
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
 " LaTeX settings
 let g:vimtex_fold_enabled=1
 let g:vimtex_fold_manual=1
 let g:tex_flavor='latex'
 let g:vimtex_view_method='mupdf'
 
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<M-Tab>"
+let g:UltiSnipsJumpForwardTrigger="<M-j>"
+let g:UltiSnipsJumpBackwardTrigger="<M-k>"
+
+" Sources
+"source $XDG_CONFIG_HOME/nvim/coc.vim

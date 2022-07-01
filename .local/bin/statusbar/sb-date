@@ -1,22 +1,22 @@
 #!/bin/sh
 
-clock=$(date '+%I')
+#clock=$(date '+%I')
 
-case "$clock" in
-	"00") icon="🕛" ;;
-	"01") icon="🕐" ;;
-	"02") icon="🕑" ;;
-	"03") icon="🕒" ;;
-	"04") icon="🕓" ;;
-	"05") icon="🕔" ;;
-	"06") icon="🕕" ;;
-	"07") icon="🕖" ;;
-	"08") icon="🕗" ;;
-	"09") icon="🕘" ;;
-	"10") icon="🕙" ;;
-	"11") icon="🕚" ;;
-	"12") icon="🕛" ;;
-esac
+#case "$clock" in
+    #"00") icon="" ;;
+    #"01") icon="" ;;
+    #"02") icon="" ;;
+    #"03") icon="" ;;
+    #"04") icon="" ;;
+    #"05") icon="" ;;
+    #"06") icon="" ;;
+    #"07") icon="" ;;
+    #"08") icon="" ;;
+    #"09") icon="" ;;
+    #"10") icon="" ;;
+    #"11") icon="" ;;
+    #"12") icon="" ;;
+#esac
 
 case $BUTTON in
     1) notify-send "This Month" "$(cal --color=always | sed "s/..7m/<b><span color=\"orange\">/;s/..27m/<\/span><\/b>/")" ;;
@@ -24,4 +24,4 @@ case $BUTTON in
     6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-echo $(date "+$icon %H:%M, %d.%m.%Y")
+echo $(date "+ %H:%M:%S, %d.%m.%Y")

@@ -7,5 +7,5 @@ case $BUTTON in
     6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-xkblayout-state print "⌨ %s"
+xkblayout-state print " %s"
 

@@ -9,4 +9,4 @@ case $BUTTON in
 esac
 
 temp_path=/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp2_input
-echo 🌡 $(bc <<< "scale=2; $(cat $temp_path)/1000")°C
+echo " "$(bc <<< "scale=2; $(cat $temp_path)/1000")°C

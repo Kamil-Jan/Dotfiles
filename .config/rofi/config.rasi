@@ -1,18 +1,19 @@
+@theme "everforest.rasi"
+
 configuration {
     modi: "drun";
     width: 25;
     lines: 5;
     columns: 1;
-    terminal: "alacritty";
+    terminal: "st";
     matching: "fuzzy";
     case-sensitive: false;
-    theme: "gruvbox-dark.rasi";
     font: "JetBrains Mono Nerd Font 12";
     drun-display-format: "{name} [<span weight='light' size='small'>({generic})</span>]";
     kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
     kb-row-down: "Down,Control+j";
-    kb-row-left: "Control+h";
-    kb-row-right: "Control+l";
+    kb-row-left: "Alt+h";
+    kb-row-right: "Alt+l";
     kb-accept-entry: "Control+m,Return,KP_Enter";
     kb-remove-to-eol: "Control+Shift+e";
     kb-mode-next: "Shift+Right,Control+Tab";

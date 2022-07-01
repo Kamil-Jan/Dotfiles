@@ -5,7 +5,7 @@
     "v": "action:vsplit",
     "s": "action:split"
   },
-  "snippets.ultisnips.enable": false,
+  "snippets.ultisnips.enable": true,
   "suggest.completionItemKindLabels": {
     "keyword": "\uf1de",
     "variable": "\ue79b",

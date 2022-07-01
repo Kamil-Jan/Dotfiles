@@ -1,6 +1,6 @@
 " Coc.nvim settings.
 
- "Snippets settings
+" Snippets settings
 imap <M-Tab> <Plug>(coc-snippets-expand)
 let g:coc_snippet_next = '<M-j>'
 let g:coc_snippet_prev = '<M-k>'

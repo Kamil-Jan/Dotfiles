@@ -88,26 +88,26 @@
 
 [urgency_low]
     # Everforest
-    background = "#2f383e"
-    foreground = "#d3c6aa"
-    frame_color = "#a7c080"
+    #background = "#2f383e"
+    #foreground = "#d3c6aa"
+    #frame_color = "#a7c080"
 
     # Gruvbox
-    #background = "#282828"
-    #foreground = "#ebdbb2"
-    #frame_color = "#fe8019"
+    background = "#282828"
+    foreground = "#ebdbb2"
+    frame_color = "#fe8019"
     timeout = 5
 
 [urgency_normal]
     # Everforest
-    background = "#2f383e"
-    foreground = "#d3c6aa"
-    frame_color = "#a7c080"
+    #background = "#2f383e"
+    #foreground = "#d3c6aa"
+    #frame_color = "#a7c080"
 
     # Gruvbox
-    #background = "#282828"
-    #foreground = "#ebdbb2"
-    #frame_color = "#fe8019"
+    background = "#282828"
+    foreground = "#ebdbb2"
+    frame_color = "#fe8019"
     timeout = 5
 
 [urgency_critical]

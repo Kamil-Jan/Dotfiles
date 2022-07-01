@@ -14,11 +14,11 @@ picom --experimental-backends --config ~/.config/picom/picom.conf &
 light -S 30%
 
 # change language on caps lock
-#setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:shift_caps_toggle caps:escape &
-setxkbmap -model pc104 -layout us,ru -variant ,, -option caps:swapescape &
+setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:shift_caps_toggle caps:escape &
+#setxkbmap -model pc104 -layout us,ru -variant ,, -option caps:swapescape &
 
 # dynamic wallpapers
-feh --bg-scale /usr/share/wallpapers/forest.jpg &
+feh --bg-scale /usr/share/wallpapers/orange_circle.png &
 
 # Disable ugly cursor when hovering over background
 xsetroot -cursor_name left_ptr &

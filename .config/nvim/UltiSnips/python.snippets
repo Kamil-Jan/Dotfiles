@@ -1,0 +1,85 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+
+snippet omain "main template for python program (omain)"
+def main():
+	${VISUAL}$0
+
+
+if __name__ == "__main__":
+	main()
+
+endsnippet
+
+
+snippet ege "main template for task 27 (ege)"
+from random import randint
+
+
+def get_nums(filename):
+	with open(filename) as file:
+		N = int(file.readline())
+		nums = ${VISUAL}$1
+	return nums
+
+
+def gen_nums():
+	N = randint(5, 10)
+	nums = [${VISUAL}$2]
+	return nums
+
+
+def test():
+	i = 1
+	while True:
+		print(i)
+		nums = gen_nums()
+		r1 = slow(nums)
+		r2 = fast(nums)
+		if r1 != r2:
+			print("ERROR!", nums)
+			print(r1, r2)
+			break
+		i += 1
+
+
+def slow(nums):
+	${VISUAL}$3
+
+
+def fast(nums):
+	${VISUAL}$4
+
+
+def main():
+	pass
+
+
+if __name__ == "__main__":
+	main()
+
+endsnippet
+

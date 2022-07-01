@@ -2,11 +2,7 @@
 
 case $BUTTON in
     1) notify-send "$(upower -i `upower -e | grep 'BAT'` | grep "time" | xargs)" ;;
-    3) notify-send "🔋 Battery module" "\- Left click shows time to empty or time to full
-🔋: discharging
-🔌: charging
-❗: battery very low!
-" ;;
+    3) notify-send " Battery module" "\- Left click shows time to empty or time to full" ;;
     6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
@@ -16,13 +12,34 @@ for battery in /sys/class/power_supply/BAT?*; do
 	[ -n "${capacity+x}" ] && printf " "
 	# Sets up the status and capacity
 	case "$(cat "$battery/status")" in
-		"Charging") status="🔌" ;;
-		"Discharging") status="🔋" ;;
+		"Charging") status="c" ;;
+		"Discharging") status="d" ;;
 	esac
 	capacity=$(cat "$battery/capacity")
 	# Will make a warn variable if discharging and low
-	[ "$status" = "🔋" ] && [ "$capacity" -le 20 ] && warn="❗"
+
+    [ "$status" = "d" ] && [ "$capacity" -le 20 ] && warn=""
+
+    [ "$status" = "d" ] && [ "$capacity" -le 100 ] && icon=""
+    [ "$status" = "d" ] && [ "$capacity" -le 90 ] && icon=""
+    [ "$status" = "d" ] && [ "$capacity" -le 80 ] && icon=""
+    [ "$status" = "d" ] && [ "$capacity" -le 70 ] && icon=""
+    [ "$status" = "d" ] && [ "$capacity" -le 60 ] && icon=""
+    [ "$status" = "d" ] && [ "$capacity" -le 50 ] && icon=""
+    [ "$status" = "d" ] && [ "$capacity" -le 40 ] && icon=""
+    [ "$status" = "d" ] && [ "$capacity" -le 30 ] && icon=""
+    [ "$status" = "d" ] && [ "$capacity" -le 20 ] && icon=""
+    [ "$status" = "d" ] && [ "$capacity" -le 10 ] && icon=""
+
+    [ "$status" = "c" ] && [ "$capacity" -le 100 ] && icon=""
+    [ "$status" = "c" ] && [ "$capacity" -le 90 ] && icon=""
+    [ "$status" = "c" ] && [ "$capacity" -le 80 ] && icon=""
+    [ "$status" = "c" ] && [ "$capacity" -le 60 ] && icon=""
+    [ "$status" = "c" ] && [ "$capacity" -le 40 ] && icon=""
+    [ "$status" = "c" ] && [ "$capacity" -le 30 ] && icon=""
+    [ "$status" = "c" ] && [ "$capacity" -le 20 ] && icon=""
+
 	# Prints the info
-	printf "%s%s %d%%" "$status" "$warn" "$capacity"; unset warn
+	printf "%s%s %d%%" "$icon" "$warn" "$capacity"; unset warn
 done && exit 0
 
