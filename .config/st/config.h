@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Caskaydia Cove Nerd Font:size=10:antialias=true:autohint=true";
-static char *font2[] = { "JoyPixels:size=10:antialias=true:autohint=true" };
+static char *font = "Caskaydia Cove Nerd Font Mono:size=16:antialias=true:autohint=true";
+static char *font2[] = { "Roboto Mono Nerd Font:size=13" };
 
 static int borderpx = 2;
 

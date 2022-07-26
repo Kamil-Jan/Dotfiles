@@ -35,8 +35,6 @@ module-margin-left = 0
 module-margin-right = 0
 
 font-0 = Caskaydia Cove Nerd Font:size=12:antialias=true:autohint=true;1
-font-1 = JoyPixels:size=11:antialias=true:autohint=true;1
-font-2 = FontAwesome5Brands:style=Solid:pixelsize=12:antialias=false;1
 
 modules-left = bspwm
 modules-center = date
