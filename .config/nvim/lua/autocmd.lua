@@ -11,6 +11,9 @@ vim.cmd [[
     autocmd BufWritePre * %s/\s\+$//e
 
     " C++ settings
+    autocmd FileType c,cpp setlocal tabstop=2
+    autocmd FileType c,cpp setlocal softtabstop=2
+    autocmd FileType c,cpp setlocal shiftwidth=2
     autocmd FileType cpp nmap <silent> <leader>h :FSHere<CR>
     autocmd FileType cpp nmap <silent> <leader>sht :FSTab<CR>
     autocmd FileType cpp nmap <silent> <leader>shl :FSSplitRight<CR>
@@ -18,16 +21,13 @@ vim.cmd [[
     autocmd FileType cpp nmap <silent> <leader>shk :FSSplitAbove<CR>
     autocmd FileType cpp nmap <silent> <leader>shj :FSSplitBelow<CR>
 
-    autocmd FileType c,cpp,objc nnoremap <leader>f :<C-u>ClangFormat<CR>
-    autocmd FileType c,cpp,objc vnoremap <leader>f :ClangFormat<CR>
-
     " Run python code using <F9>
     autocmd FileType python map <buffer> <F9> :w<CR>:sp<CR>:exec 'term python' shellescape(@%, 1)<CR>
     autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:sp<CR>:exec 'term python' shellescape(@%, 1)<CR>
 
     " Compile C++ file using <F9>. Run using <F10>
-    autocmd FileType cpp map <buffer> <F8> :w<CR>:!g++ -std=c++17 -Wshadow -Wall -O2 -o %:r %<CR>
-    autocmd FileType cpp map <buffer> <F9> :w<CR>:!g++ -std=c++17 -Wshadow -Wall -g -fsanitize=address -fsanitize=undefined -o %:r %<CR>
+    autocmd FileType cpp map <buffer> <F8> :w<CR>:!g++ -std=c++20 -Wshadow -Wall -O2 -o %:r %<CR>
+    autocmd FileType cpp map <buffer> <F9> :w<CR>:!g++ -std=c++20 -Wshadow -Wall -g -gdwarf-4 -fsanitize=address -fsanitize=undefined -o %:r %<CR>
     autocmd FileType cpp map <buffer> <F10> :sp<CR>:term ./%:r<CR>
 
     " Compile C file using <F9>. Run using <F10>

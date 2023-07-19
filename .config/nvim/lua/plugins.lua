@@ -1,5 +1,4 @@
 local fn = vim.fn
-
 -- Automatically install packer (.local/share/nvim/site/pack/packer/start)
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then

@@ -9,7 +9,7 @@ set.softtabstop = 4
 set.shiftwidth = 4
 set.expandtab = true
 set.smartindent = true
-set.autoindent = false
+set.autoindent = true
 
 -- Dark Colors
 set.termguicolors = true

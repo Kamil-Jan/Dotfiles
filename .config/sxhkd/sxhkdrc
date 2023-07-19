@@ -13,7 +13,7 @@ super + d
 
 # browser
 super + b
-    brave
+    firefox
 
 # messenger
 super + t

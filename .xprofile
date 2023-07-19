@@ -18,7 +18,7 @@ setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:shift_caps_toggle c
 #setxkbmap -model pc104 -layout us,ru -variant ,, -option caps:swapescape &
 
 # dynamic wallpapers
-feh --bg-scale /usr/share/wallpapers/orange_circle.png &
+feh --bg-fill /usr/share/wallpapers/nature-mountains-dawn-clouds.jpg &
 
 # Disable ugly cursor when hovering over background
 xsetroot -cursor_name left_ptr &
