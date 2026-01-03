@@ -73,4 +73,3 @@ nmap('<M-r>', ':set iminsert=1<CR>')
 nmap('<M-e>', ':set iminsert=0<CR>')
 
 nmap('<F5>', ':NvimTreeToggle<CR>')
-

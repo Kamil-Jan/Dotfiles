@@ -1,11 +1,12 @@
+
 vim.cmd [[
     " Change left column highlighting
     autocmd VimEnter * :hi CursorLineNr guibg=237
     autocmd VimEnter * :hi SignColumn guibg=237
-    autocmd VimEnter * :hi SignifySignDelete guibg=237 guifg=#fb4934
-    autocmd VimEnter * :hi SignifySignDeleteFirstLine guibg=237 guifg=#cc241d
-    autocmd VimEnter * :hi SignifySignChange guibg=237 guifg=#fe8019
-    autocmd VimEnter * :hi SignifySignAdd guibg=237 guifg=#b8bb26
+    autocmd VimEnter * :hi GitSignsDelete guibg=237 guifg=#fb4934
+    autocmd VimEnter * :hi GitSignsDeleteFirstLine guibg=237 guifg=#cc241d
+    autocmd VimEnter * :hi GitSignsChange guibg=237 guifg=#fe8019
+    autocmd VimEnter * :hi GitSignsAdd guibg=237 guifg=#b8bb26
 
     " Delete all trailing whitespaces on save
     autocmd BufWritePre * %s/\s\+$//e
@@ -43,6 +44,10 @@ vim.cmd [[
     autocmd FileType pascal map <buffer> <F9> :w<CR>:sp<CR>:exec 'term fpc ' shellescape(@%, 1)<CR>
     autocmd FileType pascal map <buffer> <F10> :sp<CR>:term ./%:r<CR>
 
+    " Compile Haskell file using <F9>. Run using <F10>
+    autocmd FileType haskell map <buffer> <F9> :w<CR>:!ghc -o %:r %<CR>
+    autocmd FileType haskell map <buffer> <F10> :sp<CR>:term ./%:r<CR>
+
     " Compile and open LaTex document
     autocmd FileType plaintex map <buffer> <F9> :w<CR>:sp<CR>:exec 'term pdflatex' shellescape(@%, 1)<CR>
     autocmd FileType plaintex map <buffer> <F10> :sp<CR>:terminal zathura %:r.pdf<CR>:q<CR>
@@ -51,5 +56,5 @@ vim.cmd [[
 
     " Run bash script
     autocmd FileType sh map <buffer> <F9> :sp<CR>:term ./%<CR>
-]]
 
+]]
